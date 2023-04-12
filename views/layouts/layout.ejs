@@ -34,13 +34,69 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/dependencies/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/startpage.css">
     <!--STYLES END-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.cdnfonts.com/css/libre-franklin" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   </head>
 
   <body>
+
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="#">Logo</a>
+        </div>
+        <ul class="nav-links">
+          <!-- Links für Desktop-Bildschirme -->
+          <li class="desktop-link"><a href="#">Preise</a></li>
+          <li class="desktop-link"><a href="#">About Us</a></li>
+          <li class="desktop-link"><a href="#">Contact</a></li>
+          <!-- Menü-Icon für Mobilgeräte -->
+          <li class="mobile-link">
+            <i class="fa-solid fa-bars" style="color: #c18c02;"></i>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <%- body %>
 
-
+    <footer class="footer-clean">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 item">
+            <h3>Datenschutz</h3>
+            <ul>
+              <li><a href="#"></a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-sm-6 item">
+            <h3>Impressum</h3>
+            <ul>
+              <li><a href="#">Telefon: 07531 2060</a></li>
+              <li><a href="#">Adresse: Alfred-Wachtel-Straße</a></li>
+              <li><a href="#">PLZ: 78462 Konstanz</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 item social">
+            <a href="#"><i class="icon ion-social-facebook"></i></a>
+            <a href="#"><i class="icon ion-social-twitter"></i></a>
+            <a href="#"><i class="icon ion-social-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+    
 
     <!--
         Client-side Templates
