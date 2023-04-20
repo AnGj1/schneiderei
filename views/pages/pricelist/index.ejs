@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Dienstleistungen</h1>
+
+
+    <div class="item-content">
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Preis</th>
+            </thead>
+            <tbody>
+                <% pricelist.forEach(function(pricelist){ %>
+                    <tr>
+                        <td>
+                            <%= pricelist.name %>
+                        </td>
+                        <td>
+                            <%= pricelist.price %>
+                        </td>
+                        <td> <a class="gold-button" href="/pricelist/<%= pricelist.id %>">anzeigen</a></td>
+                        <td> <a class="gold-button" href="/pricelist/<%= pricelist.id %>/delete">löschen</a></td>
+                        <td> <a class="gold-button" href="/pricelist/<%= pricelist.id %>/edit">ändern</a></td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <a class="gold-button" href="/pricelist/new">Hinzufügen</a>
+    </div>
+</div>
+</div>

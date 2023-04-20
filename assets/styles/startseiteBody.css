@@ -1,6 +1,28 @@
 *{
     font-family: 'Libre Franklin', sans-serif;
 }
+section .button {
+  text-align: right;
+}
+
+.gold-button {
+  border-width: 3px;
+  border-style: outset;
+  border-color: #c18c02;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: #c18c02;
+  background-color: white;
+
+}
+
+.gold-button:hover {
+  background-color: #c18c02;
+  color: white;
+}
+
 .main-container {
     width: 100%;
     max-width: 960px;

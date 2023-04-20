@@ -20,7 +20,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/startpage' },
-
+  'GET /pricelist': { view: 'pages/price'},
 
   /***************************************************************************
   *                                                                          *
@@ -33,5 +33,13 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'GET /admin': { view: 'pages/admin' },
+  'GET /pricelist/new': { view: 'pages/pricelist/new' },
+  'POST /pricelist': { controller: 'PricelistController', action:'create' },
+  'GET /pricelist': 'PricelistController.find',
+  'GET /pricelist/show/:id': 'pricelist.findOne',
+  'GET /pricelist/:id/delete': 'pricelist.destroy',
+  'GET /pricelist/:id/edit': 'pricelist.edit',
+  'POST /pricelist/:id/update': 'pricelist.update'
 
 };
