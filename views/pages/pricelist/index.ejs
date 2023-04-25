@@ -1,6 +1,11 @@
 <div class="container">
     <h1>Dienstleistungen</h1>
 
+    <form action="/pricelist">
+        <label>Suche</label>
+        <input type="text" value="" length="20" name="q">
+        <button class="btn btn-primary" type="submit">Suche</button>
+    </form>
 
     <div class="item-content">
         <table class="table">
@@ -17,14 +22,17 @@
                         <td>
                             <%= pricelist.price %>
                         </td>
-                        <td> <a class="gold-button" href="/pricelist/<%= pricelist.id %>">anzeigen</a></td>
-                        <td> <a class="gold-button" href="/pricelist/<%= pricelist.id %>/delete">löschen</a></td>
-                        <td> <a class="gold-button" href="/pricelist/<%= pricelist.id %>/edit">ändern</a></td>
+                        <td>
+                            <%= pricelist.category.name %>
+                        </td>
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>">anzeigen</a></td>
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/delete">löschen</a></td>
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/edit">ändern</a></td>
                     </tr>
                     <% }); %>
             </tbody>
         </table>
-        <a class="gold-button" href="/pricelist/new">Hinzufügen</a>
+        <a class="btn btn-primary" href="/pricelist/new">Hinzufügen</a>
     </div>
 </div>
 </div>

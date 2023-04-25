@@ -34,8 +34,23 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /admin': { view: 'pages/admin' },
+  'GET /kontakt': { view: 'pages/kontakt' },
+  
   'GET /pricelist/new': { view: 'pages/pricelist/new' },
   'POST /pricelist': { controller: 'PricelistController', action:'create' },
+  'GET /pricelist/new': { controller: 'PricelistController', action:'new' },
+
+  'GET /pricelist/show': 'pricelist.findOne',
+  'GET /pricelist/:id/edit': { controller: 'PricelistController', action: 'editOne' },
+  'POST /pricelist/:id/update': { controller: 'PricelistController', action: 'updateOne' },
+  'GET /pricelist/:id/delet': { controller: 'PricelistController', action: 'destroyOne' },
+ 
+  'GET /category/new': { view: 'pages/category/new' },
+  'POST /category': { controller: 'CategoryController', action:'create' },
+  'GET /category/:id/delet': { controller: 'CategoryController', action: 'destroyOne' },
+  'GET /category': { controller: 'CategoryController', action: 'find' },
+
+
   'GET /pricelist': 'PricelistController.find',
   'GET /pricelist/show/:id': 'pricelist.findOne',
   'GET /pricelist/:id/delete': 'pricelist.destroy',

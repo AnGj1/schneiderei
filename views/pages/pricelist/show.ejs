@@ -28,6 +28,16 @@
                     <%= pricelist.description %>
                 </div>
             </div>
+            <% if(pricelist.category) { %>
+                <div class="row">
+                    <div class="col-2">
+                        Kategorie
+                    </div> 
+                    <div class="col-10">
+                        <%= pricelist.category.name %>
+                    </div>
+                </div>
+                <% } %>
         </div>
     </div>
 </div>
