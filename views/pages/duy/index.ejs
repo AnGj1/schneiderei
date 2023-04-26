@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <h1 class="text-center">Oft gestellte Fragen</h1>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <div class="input-group col-md-6">
+      <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+      <span class="input-group-append">
+        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+          <i class="fa fa-search"></i>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% duys.forEach(function(duy){ %>
+      <div class="col-md-6 mb-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= duy.titel %>
+            </h5>
+            <p class="card-text">
+              <%= duy.description %>
+            </p>
+            <a href="/duy/<%= duy.id %>" class=class="btn btn-primary">Anzeigen</a>
+            <a href="/duy/<%= duy.id %>/edit" class=class="btn btn-secondary">Ändern</a>
+            <a href="/duy/<%= duy.id %>/destroy" class=class="btn btn-primary">Löschen</a>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+  </div>
+  <div class="row justify-content-center">
+    <a href="/duy/new" class="btn btn-primary">Neuen Artikel hinzufügen</a>
+  </div>
+</div>

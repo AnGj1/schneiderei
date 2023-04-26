@@ -34,12 +34,33 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /admin': { view: 'pages/admin' },
+
   'GET /pricelist/new': { view: 'pages/pricelist/new' },
   'POST /pricelist': { controller: 'PricelistController', action:'create' },
   'GET /pricelist': 'PricelistController.find',
   'GET /pricelist/show/:id': 'pricelist.findOne',
   'GET /pricelist/:id/delete': 'pricelist.destroy',
   'GET /pricelist/:id/edit': 'pricelist.edit',
-  'POST /pricelist/:id/update': 'pricelist.update'
+  'POST /pricelist/:id/update': 'pricelist.update',
+
+
+  
+  
+'POST /duy': { controller: 'DuyController', action:'create' },
+'GET /duy/new': { controller: 'DuyController', action:'new' }, /*neuen eintrag erstellen */
+'GET /duy/:id': 'DuyController.findOne',
+'GET /duy': 'DuyController.find',
+
+'GET /duy/:id/edit': { controller: 'DuyController', action: 'editOne' },
+'POST /duy/:id/update': { controller: 'DuyController', action: 'updateOne' },
+'GET /duy/:id/destroy': { controller: 'DuyController', action: 'destroyOne' }, 
+
+'GET /category/new': { view: 'pages/category/new' },
+'POST /category': { controller: 'CategoryController', action:'create' },
+'GET /category/:id/destroy': { controller: 'CategoryController', action: 'destroyOne' },
+'GET /category': { controller: 'CategoryController', action: 'find' },
+
 
 };
+
+

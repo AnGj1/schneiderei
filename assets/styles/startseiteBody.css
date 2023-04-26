@@ -5,24 +5,6 @@ section .button {
   text-align: right;
 }
 
-.gold-button {
-  border-width: 3px;
-  border-style: outset;
-  border-color: #c18c02;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: #c18c02;
-  background-color: white;
-
-}
-
-.gold-button:hover {
-  background-color: #c18c02;
-  color: white;
-}
-
 .main-container {
     width: 100%;
     max-width: 960px;
@@ -51,7 +33,7 @@ section .button {
   
   section h2 {
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 10px;
   }
   
@@ -68,24 +50,36 @@ section .button {
   }
 
   .row p{
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 400;
     letter-spacing: 2px;
     text-align: center;
     margin-top: 1rem;
   }
 
+  #bildklein{
+    width: 960px;
+    margin: 0 auto;
+    margin-left: 0;
+    margin-right: 0;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+  
+
+
+  }
   .images{
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    height: 50%;
+    height: auto;
   }
 
  h2{
     line-height: 4em;
-    font-weight: bold;
+    font-weight:400;
     font-size: 35px; 
   }
 
@@ -102,40 +96,69 @@ section .button {
   }
 
   section p{
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
   }
  
+ 
+ /* Styles für Bild */
+.image-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.image-wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+
+.bilder-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bilder {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  margin: 10px;
+}
+
+.bilder img {
+  width: calc(100% - 20px);;
+  max-height: auto;
+  height: 500px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+  
+}
+
+/* Styles für Responsiveness */
+@media only screen and (max-width: 450px) {
+  .bilder-container {
+  display: block;
+  }
   .bilder {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
+  width: 100%;
+  height: auto;
+  
+  }
   }
   
-  .bilder .container {
+  @media only screen and (min-width: 450px) {
+  .bilder-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: row;
   }
-  
-  .bilder img {
-    width: calc(100% - 20px); /* 2 Bilder pro Zeile */
-    max-height: 240px;
-    margin: 10px;
+  .bilder {
+  width: calc(50% - 20px);
+  margin-bottom: 20px;
+  height: auto;
   }
-  
-  @media (min-width: 450px) {
-    .bilder img {
-      width: calc(100% - 20px); 
-      width: 300px;
-      height: 300px;
-      overflow: hidden;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      object-position: center;
-    }
   }
-  
   
     

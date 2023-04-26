@@ -1,0 +1,15 @@
+h1{
+    font-family: 'Libre Franklin', sans-serif;
+    color: #c18c02;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.container{
+    margin-bottom: 1rem;
+}
+input:focus {
+    background-color: black;
+    color: white;
+  }
+ 
