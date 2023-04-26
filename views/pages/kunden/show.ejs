@@ -1,0 +1,24 @@
+<h1>Alle Kunden</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>E-Mail</th>
+                <th>Nachname</th>
+                <th>Name</th>
+                <th>Telefon</th>
+                <th>Benutzername</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% kundens.forEach(function(kunden) { %>
+                <tr>
+                    <td><%= kunden.email %></td>
+                    <td><%= kunden.nachnahme %></td>
+                    <td><%= kunden.name %></td>
+                    <td><%= kunden.telefon %></td>
+                    <td><%= kunden.benutzerName %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>

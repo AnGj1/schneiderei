@@ -1,164 +1,164 @@
 *{
-    font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
 }
 section .button {
-  text-align: right;
+text-align: right;
 }
 
 .main-container {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .item-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .item-content .col-md-6 {
-    padding: 10px;
-  }
-  
-  .item-content button {
-    margin-left: auto;
-  }
-  
-  section {
-    padding: 20px 0;
-  }
-  
-  section h2 {
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
-  
-  section div {
-    font-size: 16px;
-    line-height: 1.5;
-  }
- 
-  .row{
-  display: flex;
-  align-items: center; /* vertikal zentrieren */
-  justify-content: center; /* horizontal zentrieren */
-  height: 100%;
-  }
-
-  .row p{
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-align: center;
-    margin-top: 1rem;
-  }
-
-  #bildklein{
-    width: 960px;
-    margin: 0 auto;
-    margin-left: 0;
-    margin-right: 0;
-      height: 300px;
-      object-fit: cover;
-      object-position: center;
-  
-
-
-  }
-  .images{
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: auto;
-  }
-
- h2{
-    line-height: 4em;
-    font-weight:400;
-    font-size: 35px; 
-  }
-
-  section p{
-    line-height: 2em;
-    font-weight: 400;
-    color: #c18c02;
-    letter-spacing: 1px;
-  }
-
-  
-  h2{
-    font-size: 48px; 
-  }
-
-  section p{
-    font-size: 20px;
-    font-weight: 500;
-  }
- 
- 
- /* Styles für Bild */
-.image-wrapper {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.image-wrapper img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.bilder-container {
+.item-content {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
 }
 
-.bilder {
-  width: 100%;
-  max-width: 450px;
+.item-content .col-md-6 {
+  padding: 10px;
+}
+
+.item-content button {
+  margin-left: auto;
+}
+
+section {
+  padding: 20px 0;
+}
+
+section h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+section div {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.row{
+display: flex;
+align-items: center; /* vertikal zentrieren */
+justify-content: center; /* horizontal zentrieren */
+height: 100%;
+}
+
+.row p{
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#bildklein{
+  width: 960px;
+  margin: 0 auto;
+  margin-left: 0;
+  margin-right: 0;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+
+
+
+}
+.images{
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
   height: auto;
-  margin: 10px;
+}
+
+h2{
+  line-height: 4em;
+  font-weight:400;
+  font-size: 35px; 
+}
+
+section p{
+  line-height: 2em;
+  font-weight: 400;
+  color: #c18c02;
+  letter-spacing: 1px;
+}
+
+
+h2{
+  font-size: 48px; 
+}
+
+section p{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+/* Styles für Bild */
+.image-wrapper {
+text-align: center;
+margin-bottom: 20px;
+}
+.image-wrapper img {
+max-width: 100%;
+height: auto;
+}
+
+.bilder-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.bilder {
+width: 100%;
+max-width: 450px;
+height: auto;
+margin: 10px;
 }
 
 .bilder img {
-  width: calc(100% - 20px);;
-  max-height: auto;
-  height: 500px;
-  margin: 0 auto;
-  display: block;
-  margin-bottom: 20px;
-  
+width: calc(100% - 20px);;
+max-height: auto;
+height: 500px;
+margin: 0 auto;
+display: block;
+margin-bottom: 20px;
+
 }
 
 /* Styles für Responsiveness */
 @media only screen and (max-width: 450px) {
-  .bilder-container {
-  display: block;
-  }
-  .bilder {
-  width: 100%;
-  height: auto;
+.bilder-container {
+display: block;
+}
+.bilder {
+width: 100%;
+height: auto;
+
+}
+}
+
+@media only screen and (min-width: 450px) {
+.bilder-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: row;
+}
+.bilder {
+width: calc(50% - 20px);
+margin-bottom: 20px;
+height: auto;
+}
+}
+
   
-  }
-  }
-  
-  @media only screen and (min-width: 450px) {
-  .bilder-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    align-items: center;
-    flex-direction: row;
-  }
-  .bilder {
-  width: calc(50% - 20px);
-  margin-bottom: 20px;
-  height: auto;
-  }
-  }
-  
-    
