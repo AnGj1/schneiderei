@@ -1,11 +1,12 @@
 module.exports = {
     attributes: {
-        email: { type: 'string', columnType: 'varchar(80)',  required: true, unique: true },
+        id: { type: 'number', autoIncrement: true },
+        email: { type: 'string', columnType: 'varchar(80)',  required: false, unique: true },
         nachnahme:  {type: 'string', columnType: 'varchar(80)'},
         name: { type: 'string', columnType: 'varchar(80)' },
         telefon: { type: 'string', columnType: 'varchar(15)' },
-        passwort: { type: 'string', columnType: 'varchar(80)', required: true, encrypt: true},
+        passwort: { type: 'string', columnType: 'varchar(80)', required: false, encrypt: true},
         benutzerName: { type: 'string', columnType: 'varchar(80)' },
-
-    },
+   
+      },
 };

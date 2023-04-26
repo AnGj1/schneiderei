@@ -7,12 +7,14 @@
 
 const Sails = require("sails/lib/app/Sails");
 
+
 module.exports = {
   create: async function (req, res) {
     sails.log.debug("Create pricelist....")
     let params = req.allParams();
-    await pricelist.create(params);
+    await Pricelist.create(params);
     res.redirect ('/pricelist' );
+    
   },
 
   new: async function (req, res) {
@@ -49,14 +51,14 @@ module.exports = {
 
   destroy: async function (req, res) {
     sails.log.debug("Delete single price....")
-    let pricelist = await pricelist.destroyOne({ id: req.params.id });
+    let pricelist = await Pricelist.destroyOne({ id: req.params.id });
     // 
     res.redirect ('/pricelist' );
   },
   update: async function (req, res) {
     sails.log.debug("Update price....")
     let params = req.allParams();
-    await pricelist.updateOne({id: req.params.id}).set(params);
+    await Pricelist.updateOne({id: req.params.id}).set(params);
     res.redirect ('/pricelist' );
   },
 

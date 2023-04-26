@@ -11,10 +11,10 @@
         <table class="table">
             <thead>
                 <th>Name</th>
-                <th>Preis</th>
+                <th>Preis</th>                    
             </thead>
             <tbody>
-                <% pricelist.forEach(function(pricelist){ %>
+                <% prices.forEach(function(pricelist){ %>
                     <tr>
                         <td>
                             <%= pricelist.name %>
@@ -23,7 +23,11 @@
                             <%= pricelist.price %>
                         </td>
                         <td>
-                            <%= pricelist.category.name %>
+                            <% if(pricelist.category) { %>
+                                <%= pricelist.category.name %>
+                              <% } else { %>
+                                Keine Kategorie zugeordnet
+                              <% } %>
                         </td>
                         <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>">anzeigen</a></td>
                         <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/delete">löschen</a></td>
