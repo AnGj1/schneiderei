@@ -16,18 +16,17 @@
 
 <div class="container">
   <div class="row">
-    <% costumers .forEach(function(costumer){ %>
+    <% costumers.forEach(function(costumer){ %>
       <div class="col-md-6 mb-5">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">
-              <%= costumer.lastname %>, <%= costumer.firstname %>
-            </h5>
-            <p class="card-text">
+              Name: <%= costumer.name %> <br>
+              Nachnahme:  <%= costumer.nachnahme %><br>
               Email: <%= costumer.email %><br>
-              Telefon: <%= costumer.phone %><br>
-              Benutzername: <%= costumer.username %>
-            </p>
+              Telefon: <%= costumer.telefon %><br>
+              Benutzername: <%= costumer.benutzerName %>
+            </h5>
             <a href="/kunden/<%= costumer.id %>" class="btn btn-primary">Anzeigen</a>
             <a href="/kunden/<%= costumer.id %>/edit" class="btn btn-secondary">Ändern</a>
             <a href="/kunden/<%= costumer.id %>/destroy" class="btn btn-primary">Löschen</a>
