@@ -17,7 +17,7 @@ module.exports = {
     sails.log.debug("Create meal....")
     let params = req.allParams();
     await Meal.create(params);
-    res.view('pages/meal/status', { mealname: req.param("name")})
+    res.redirect ('/meal' );
   },
 
   find: async function (req, res) {
