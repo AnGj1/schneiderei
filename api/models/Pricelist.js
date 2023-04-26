@@ -7,5 +7,8 @@ module.exports = {
         category: {
             model: 'category'
         },
+        admin: {
+            model: 'admin'
+          }
     },
   };
