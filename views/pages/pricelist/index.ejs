@@ -11,7 +11,9 @@
         <table class="table">
             <thead>
                 <th>Name</th>
-                <th>Preis</th>                    
+                <th>Preis</th>
+                <th>Kategorie</th>
+                <th>Beschreibung</th>                    
             </thead>
             <tbody>
                 <% prices.forEach(function(pricelist){ %>
@@ -29,9 +31,12 @@
                                 Keine Kategorie zugeordnet
                               <% } %>
                         </td>
-                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>">anzeigen</a></td>
-                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/delete">löschen</a></td>
-                        <td> <a href="/pricelist/<%= pricelist.id %>/edit" class="btn btn-primary" >ändern</a></td>
+                        <td>
+                            <%= pricelist.description %>
+                        </td>
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>">Anzeigen</a></td>
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/edit">Ändern</a></td> 
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/destroy">Löschen</a></td>
                     </tr>
                     <% }); %>
             </tbody>
