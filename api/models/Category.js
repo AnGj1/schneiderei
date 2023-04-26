@@ -9,6 +9,8 @@ module.exports = {
         duys: {
             collection: 'duy',
             via: 'category'
-        }
+        }, 
+        
+       
     }
   };

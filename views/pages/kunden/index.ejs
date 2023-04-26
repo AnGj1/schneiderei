@@ -16,21 +16,21 @@
 
 <div class="container">
   <div class="row">
-    <% kunden.forEach(function(kunde){ %>
+    <% costumers .forEach(function(customer){ %>
       <div class="col-md-6 mb-5">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">
-              <%= kunden.lastname %>, <%= kunden.firstname %>
+              <%= customer.lastname %>, <%= customer.firstname %>
             </h5>
             <p class="card-text">
-              Email: <%= kunden.email %><br>
-              Telefon: <%= kunden.phone %><br>
-              Benutzername: <%= kunden.username %>
+              Email: <%= customer.email %><br>
+              Telefon: <%= customer.phone %><br>
+              Benutzername: <%= customer.username %>
             </p>
-            <a href="/kunden/show/<%= kunden.id %>" class="btn btn-primary">Anzeigen</a>
-            <a href="/kunden/edit/<%= kunden.id %>" class="btn btn-secondary">Ändern</a>
-            <a href="/kunden/delete/<%= kunden.id %>" class="btn btn-primary">Löschen</a>
+            <a href="/kunden/<%= customer.id %>" class="btn btn-primary">Anzeigen</a>
+            <a href="/kunden/<%= customer.id %>/edit" class="btn btn-secondary">Ändern</a>
+            <a href="/kunden/<%= customer.id %>/destroy" class="btn btn-primary">Löschen</a>
           </div>
         </div>
       </div>

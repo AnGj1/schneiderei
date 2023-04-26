@@ -44,7 +44,8 @@ module.exports.routes = {
   'GET /pricelist/:id/edit': { controller: 'PricelistController', action: 'editOne' },
   'POST /pricelist/:id/update': { controller: 'PricelistController', action: 'updateOne' },
   'GET /pricelist/:id/destroy': { controller: 'PricelistController', action: 'destroyOne' },
-
+  'POST /pricelist/create': { controller: 'PricelistController', action: 'create' },
+  'GET /pricelist/:id': { controller: 'PricelistController', action: 'findOne' },
 
   'POST /duy': { controller: 'DuyController', action: 'create' },
   'GET /duy/new': { controller: 'DuyController', action: 'new' }, /*neuen eintrag erstellen */
@@ -60,15 +61,14 @@ module.exports.routes = {
   'GET /category/:id/destroy': { controller: 'CategoryController', action: 'destroyOne' },
   'GET /category': { controller: 'CategoryController', action: 'find' },
 
-
-  'POST /kunden': 'KundendatenController.create',
-  'GET /kunden/new': { controller: 'KundendatenController', action: 'new' },
-  'GET /kunden/:id': 'KundendatenController.findOne',
+  'GET /kunden': { view: 'pages/kunden' },
   'GET /kunden': 'KundendatenController.find',
-
-  'GET /kunden/:id/edit': 'KundendatenController.editOne',
-  'POST /kunden/:id/update': 'KundendatenController.updateOne',
-  'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
+'POST /kunden': 'KundendatenController.create',
+'GET /kunden/new': { controller: 'KundendatenController', action: 'new' },
+'GET /kunden/:id': 'KundendatenController.findOne',
+'GET /kunden/:id/edit': 'KundendatenController.editOne',
+'POST /kunden/:id/update': 'KundendatenController.updateOne',
+'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
 
 };
 

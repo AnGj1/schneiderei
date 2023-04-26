@@ -1,0 +1,21 @@
+<div class="container">
+    <form action="/kunden/<%= customer.id %>/update" method="post">
+        <div>
+            <div class="form-group">
+                <label class="col-form-label-lg">Name</label>
+                <input type="text" class="form-control" maxlength="80" value="<%= kunden.name %>" name="name">
+            </div>
+            
+            <div class="form-group">
+                <label class="col-form-label-lg">E-Mail</label>
+                <input type="email" maxlength="255" class="form-control" size="40" value="<%= kunden.email %>" name="email">
+            </div>
+            
+            <div class="form-group">
+                <label class="col-form-label-lg">Telefonnummer</label>
+                <input type="tel" maxlength="20" class="form-control" size="40" value="<%= kunden.telefonnummer %>" name="telefonnummer">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Aktualisieren</button>
+    </form>
+</div>
