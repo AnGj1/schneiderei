@@ -17,7 +17,7 @@ module.exports = {
     },
 
     create: async function (req, res) {
-        sails.log.debug("Create customer....")
+        sails.log.debug("Create costomer....")
         let params = req.allParams();
         sails.log.debug(params); // log the received params
         await Kunden.create(params);
@@ -39,11 +39,11 @@ module.exports = {
     res.view ('pages/kunden/index', { costumers: costumers } );
   },
 
-    findOne: async function (req, res) {
-        sails.log.debug("List single customer....")
-        let costumers  = await Kunden.findOne({id: req.params.id });
-        res.view('pages/kunden/show', { costumers :costumers  });
-    },
+  findOne: async function (req, res) {
+    sails.log.debug("List single costomer....")
+    let costumers = await Kunden.findOne({id: req.params.id });
+    res.view('pages/kunden/show', { costumers: costumers });
+  },
 
 
     editOne: async function (req, res) {
