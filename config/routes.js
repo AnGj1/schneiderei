@@ -34,6 +34,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /admin': { view: 'pages/admin' },
+  'GET /bewertung': { view: 'pages/bewertung' },
+  'POST /bewertung': { controller: 'BewertungController', action: 'create' },
+  'GET /pricelist': { controller: 'PricelistController', action: 'index' },
 
 
   'POST /pricelist': { controller: 'PricelistController', action: 'create' },
