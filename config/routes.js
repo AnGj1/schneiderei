@@ -59,8 +59,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   
-  'GET /admin': { view: 'pages/admin' },
-  
+  'GET /admin': { action: 'view-admin' },
+  'GET /welcome': { action: 'view-homepage-or-redirect' },
+
   'GET /meal/new': { controller: 'MealController', action:'new' },
   'POST /meal': { controller: 'MealController', action:'create' },
   'GET /meal': 'MealController.find',
