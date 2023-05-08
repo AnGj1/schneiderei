@@ -351,11 +351,7 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
-<<<<<<< HEAD
-    trustProxy: true,
-=======
     // trustProxy: true,
->>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 
   },
 
