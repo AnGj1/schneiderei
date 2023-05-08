@@ -121,7 +121,7 @@ and exposed as \`req.me\`.)`
 //    }
 
     if (!this.req.wantsJSON) {
-      throw {redirect: '/'};
+      throw {redirect: '/welcome'};
     }
 
 

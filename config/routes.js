@@ -66,6 +66,7 @@ module.exports.routes = {
   ***************************************************************************/
 <<<<<<< HEAD
   
+<<<<<<< HEAD
   'GET /admin': { view: 'pages/admin' },
   
   
@@ -98,6 +99,20 @@ module.exports.routes = {
   'POST /duy/:id/update': { controller: 'DuyController', action: 'updateOne' },
   'GET /duy/:id/destroy': { controller: 'DuyController', action: 'destroyOne' },
 
+=======
+  'GET /admin': { action: 'view-admin' },
+  'GET /welcome': { action: 'view-homepage-or-redirect' },
+
+  'GET /meal/new': { controller: 'MealController', action:'new' },
+  'POST /meal': { controller: 'MealController', action:'create' },
+  'GET /meal': 'MealController.find',
+  'GET /meal/show': 'meal.findOne',
+
+  'GET /meal/:id/edit': { controller: 'MealController', action: 'editOne' },
+  'POST /meal/:id/update': { controller: 'MealController', action: 'updateOne' },
+  'GET /meal/:id/destroy': { controller: 'MealController', action: 'destroyOne' },
+ 
+>>>>>>> cf2bcc58dc82d6f2b7b70d7e6531a43eed02f30f
   'GET /category/new': { view: 'pages/category/new' },
   'POST /category': { controller: 'CategoryController', action: 'create' },
   'GET /category/:id/destroy': { controller: 'CategoryController', action: 'destroyOne' },
