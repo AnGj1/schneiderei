@@ -9,6 +9,30 @@
  */
 
 module.exports.routes = {
+   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
+  //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
+  //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
+  'GET /signup':             { action: 'entrance/view-signup' },
+  'GET /login':              { action: 'entrance/view-login' },
+
+  'GET /account':            { action: 'account/view-account-overview' },
+  'GET /account/password':   { action: 'account/view-edit-password' },
+  'GET /account/profile':    { action: 'account/view-edit-profile' },
+
+  //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
+  //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
+  //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
+  // Note that, in this app, these API endpoints may be accessed using the `Cloud.*()` methods
+  // from the Parasails library, or by using those method names as the `action` in <ajax-form>.
+  'GET /logout':                         { action: 'account/logout' },
+  'POST  /login':                        { action: 'entrance/login' },
+  'POST  /signup':                       { action: 'entrance/signup' },
+  'POST  /signup':                       { action: 'entrance/signup' },
+  'POST  /updateProfile':                { action: 'account/update-profile' },
+  'POST  /updatePassword':               { action: 'account/update-password' },
+  'POST  /signup':                       { action: 'entrance/signup' },
+
+
 
   /***************************************************************************
   *                                                                          *
@@ -21,6 +45,7 @@ module.exports.routes = {
 
   '/': { view: 'pages/startpage' },
   'GET /pricelist': { view: 'pages/price' },
+  
 
   /***************************************************************************
   *                                                                          *
@@ -34,6 +59,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /admin': { view: 'pages/admin' },
+  'GET /bewertung': { view: 'pages/bewertung' },
+  'POST /bewertung': { controller: 'BewertungController', action: 'create' },
+  'GET /pricelist': { controller: 'PricelistController', action: 'index' },
+
 
 
   'POST /pricelist': { controller: 'PricelistController', action: 'create' },
@@ -69,6 +98,7 @@ module.exports.routes = {
 'GET /kunden/:id/edit': 'KundendatenController.editOne',
 'POST /kunden/:id/update': 'KundendatenController.updateOne',
 'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
+
 
 };
 

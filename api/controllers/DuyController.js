@@ -26,7 +26,7 @@ module.exports = {
     let duys;
     if (req.query.q && req.query.q.length > 0) {
       duys = await Duy.find({
-        name: {
+        titel: {
           'contains': req.query.q
         }
       })

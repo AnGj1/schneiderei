@@ -29,7 +29,7 @@ module.exports = {
     let costumers;
     if (req.query.q && req.query.q.length > 0) {
         costumers = await Kunden.find({
-        name: {
+        email: {
           'contains': req.query.q
         }
       })
