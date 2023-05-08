@@ -41,8 +41,13 @@ module.exports = {
 
   findOne: async function (req, res) {
     sails.log.debug("List single costomer....")
+<<<<<<< HEAD
     let costumers = await Kunden.findOne({ id: req.params.id });
     res.view('pages/kunden/show', { customers: costumrs });
+=======
+    let costumers = await Kunden.findOne({id: req.params.id });
+    res.view('pages/kunden/show', { costumers: costumers });
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
   },
 
 

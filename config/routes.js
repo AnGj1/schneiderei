@@ -10,6 +10,7 @@
 
 module.exports.routes = {
 
+<<<<<<< HEAD
    //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
@@ -35,6 +36,8 @@ module.exports.routes = {
 
 
 
+=======
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
   /***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` your home page.            *
@@ -46,7 +49,10 @@ module.exports.routes = {
 
   '/': { view: 'pages/startpage' },
   'GET /pricelist': { view: 'pages/price' },
+<<<<<<< HEAD
   
+=======
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 
   /***************************************************************************
   *                                                                          *
@@ -58,10 +64,20 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
+<<<<<<< HEAD
   
   'GET /admin': { view: 'pages/admin' },
   
   
+=======
+
+  'GET /admin': { view: 'pages/admin' },
+  'GET /bewertung': { view: 'pages/bewertung' },
+  'POST /bewertung': { controller: 'BewertungController', action: 'create' },
+  'GET /pricelist': { controller: 'PricelistController', action: 'index' },
+
+
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
   'POST /pricelist': { controller: 'PricelistController', action: 'create' },
   'GET /pricelist/new': { controller: 'PricelistController', action: 'new' },
   'GET /pricelist/:id': 'PricelistController.findOne',
@@ -95,4 +111,11 @@ module.exports.routes = {
 'GET /kunden/:id/edit': 'KundendatenController.editOne',
 'POST /kunden/:id/update': 'KundendatenController.updateOne',
 'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
+<<<<<<< HEAD
 };
+=======
+
+};
+
+
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2

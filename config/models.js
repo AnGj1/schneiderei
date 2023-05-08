@@ -53,7 +53,11 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
+<<<<<<< HEAD
   migrate: 'alter',
+=======
+  // migrate: 'alter',
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 
 
   /***************************************************************************
@@ -101,7 +105,11 @@ module.exports.models = {
   ******************************************************************************/
 
   dataEncryptionKeys: {
+<<<<<<< HEAD
     default: 'nexbLHyzhQGqS95S3moao/QTvMDrHtA5NVzHFN/bHkA='
+=======
+    default: 'TXCPCz9IJvBM2S/sadjHeJLRWhHEdBMORA3SvyPcN3o='
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
   },
 
 

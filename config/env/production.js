@@ -197,7 +197,26 @@ module.exports = {
     //
     //--------------------------------------------------------------------------
 
+<<<<<<< HEAD
 
+=======
+    /***************************************************************************
+    *                                                                          *
+    * Production configuration for the session ID cookie name.                 *
+    *                                                                          *
+    * We reccomend prefixing your session cookie with `__Host-`, this limits   *
+    * the scope of your cookie to a single origin to protect against same-site *
+    * attacks.                                                                 *
+    *                                                                          *
+    * Note that with the `__Host-` prefix, session cookies will _not_ be sent  *
+    * unless `sails.config.cookie.secure` is set to `true`.                    *
+    *                                                                          *
+    * Read more:                                                               *
+    * https://sailsjs.com/config/session#?the-session-id-cookie                *
+    *                                                                          *
+    ***************************************************************************/
+    // name: '__Host-sails.sid',
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 
     /***************************************************************************
     *                                                                          *
@@ -250,10 +269,17 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
+<<<<<<< HEAD
     onlyAllowOrigins: [
        'https://example.com',
        'https://staging.example.com',
      ],
+=======
+    // onlyAllowOrigins: [
+    //   'https://example.com',
+    //   'https://staging.example.com',
+    // ],
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 
 
     /***************************************************************************
@@ -325,7 +351,11 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
+<<<<<<< HEAD
     trustProxy: true,
+=======
+    // trustProxy: true,
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 
   },
 
