@@ -10,6 +10,34 @@
 
 module.exports.routes = {
 
+<<<<<<< HEAD
+   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
+  //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
+  //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
+  'GET /signup':             { action: 'entrance/view-signup' },
+  'GET /login':              { action: 'entrance/view-login' },
+
+  'GET /account':            { action: 'account/view-account-overview' },
+  'GET /account/password':   { action: 'account/view-edit-password' },
+  'GET /account/profile':    { action: 'account/view-edit-profile' },
+
+  //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
+  //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
+  //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
+  // Note that, in this app, these API endpoints may be accessed using the `Cloud.*()` methods
+  // from the Parasails library, or by using those method names as the `action` in <ajax-form>.
+  'GET /logout':                         { action: 'account/logout' },
+  'POST  /login':                        { action: 'entrance/login' },
+  'POST  /signup':                       { action: 'entrance/signup' },
+  'POST  /signup':                       { action: 'entrance/signup' },
+  'POST  /updateProfile':                { action: 'account/update-profile' },
+  'POST  /updatePassword':               { action: 'account/update-password' },
+  'POST  /signup':                       { action: 'entrance/signup' },
+
+
+
+=======
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
   /***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` your home page.            *
@@ -21,6 +49,10 @@ module.exports.routes = {
 
   '/': { view: 'pages/startpage' },
   'GET /pricelist': { view: 'pages/price' },
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 
   /***************************************************************************
   *                                                                          *
@@ -32,10 +64,21 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
+<<<<<<< HEAD
+  
+<<<<<<< HEAD
+  'GET /admin': { view: 'pages/admin' },
+  
+  
+=======
 
   'GET /admin': { view: 'pages/admin' },
+  'GET /bewertung': { view: 'pages/bewertung' },
+  'POST /bewertung': { controller: 'BewertungController', action: 'create' },
+  'GET /pricelist': { controller: 'PricelistController', action: 'index' },
 
 
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
   'POST /pricelist': { controller: 'PricelistController', action: 'create' },
   'GET /pricelist/new': { controller: 'PricelistController', action: 'new' },
   'GET /pricelist/:id': 'PricelistController.findOne',
@@ -56,6 +99,20 @@ module.exports.routes = {
   'POST /duy/:id/update': { controller: 'DuyController', action: 'updateOne' },
   'GET /duy/:id/destroy': { controller: 'DuyController', action: 'destroyOne' },
 
+=======
+  'GET /admin': { action: 'view-admin' },
+  'GET /welcome': { action: 'view-homepage-or-redirect' },
+
+  'GET /meal/new': { controller: 'MealController', action:'new' },
+  'POST /meal': { controller: 'MealController', action:'create' },
+  'GET /meal': 'MealController.find',
+  'GET /meal/show': 'meal.findOne',
+
+  'GET /meal/:id/edit': { controller: 'MealController', action: 'editOne' },
+  'POST /meal/:id/update': { controller: 'MealController', action: 'updateOne' },
+  'GET /meal/:id/destroy': { controller: 'MealController', action: 'destroyOne' },
+ 
+>>>>>>> cf2bcc58dc82d6f2b7b70d7e6531a43eed02f30f
   'GET /category/new': { view: 'pages/category/new' },
   'POST /category': { controller: 'CategoryController', action: 'create' },
   'GET /category/:id/destroy': { controller: 'CategoryController', action: 'destroyOne' },
@@ -69,7 +126,11 @@ module.exports.routes = {
 'GET /kunden/:id/edit': 'KundendatenController.editOne',
 'POST /kunden/:id/update': 'KundendatenController.updateOne',
 'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
+<<<<<<< HEAD
+};
+=======
 
 };
 
 
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2

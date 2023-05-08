@@ -50,12 +50,21 @@ module.exports.datastores = {
     ***************************************************************************/
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
+<<<<<<< HEAD
+    adapter: 'sails-mysql',
+    host: '193.196.53.194',
+    port: 33061,
+    user: 'lido_test_user',
+    password: 'i116108',
+    database: 'lido_test'
+=======
 adapter: 'sails-mysql',
     host: '193.196.53.194',
     port: 33061,
-    user: 'user5_lido',
-    password: 'c111115',
-    database: 'schneiderei_lido'
+    user: 'user5_test',
+    password: 'c116115',
+    database: 'schneiderei_test'
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
   },
 
 

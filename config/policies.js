@@ -7,7 +7,11 @@
  * For more information on configuring policies, check out:
  * https://sailsjs.com/docs/concepts/policies
  */
+<<<<<<< HEAD
+//sage wer was tun kann 
+=======
 
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 module.exports.policies = {
 
   /***************************************************************************
@@ -17,6 +21,25 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
+<<<<<<< HEAD
+  '*': 'is-logged-in',
+
+  // Bypass the `is-logged-in` policy for:
+  'entrance/*': true,
+  'account/logout': true,
+
+  MenuController: {
+    '*': true,
+  },
+
+  MealController: {
+    '*': 'is-super-admin',
+  },
+  CategoryController: {
+    '*': 'is-super-admin',
+  }
+=======
   // '*': true,
 
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
 };

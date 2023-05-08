@@ -16,6 +16,16 @@ module.exports.bootstrap = async function() {
   // For example:
   // ```
   // // Set up fake development data (or if we already have some, avast)
+<<<<<<< HEAD
+  if (await User.count() > 0) {
+     return;
+  }
+  
+  await User.createEach([
+    { emailAddress: 'markus.eiglsperger@htwg-konstanz.de', fullName: 'Markus Eiglsperger', isSuperAdmin: true, password: await sails.helpers.passwords.hashPassword('123abc') },
+  ])
+};
+=======
   // if (await User.count() > 0) {
   //   return;
   // }
@@ -28,3 +38,4 @@ module.exports.bootstrap = async function() {
   // ```
 
 };
+>>>>>>> 6b7be9cbed565141314ef2806e0dc59deea860a2
