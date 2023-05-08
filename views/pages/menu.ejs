@@ -1,0 +1,29 @@
+<h1>Speisekarte</h1>
+
+<div>
+    <table class="table">
+        <tbody>
+            <% categories.forEach(function(category){ %>
+                <tr>
+                    <td colspan="3" class="h4">
+                        <%= category.name %> <BR>
+                    </td>
+                </tr>
+                <% if (category.meals) { %>
+                <% category.meals.forEach(function(menu){ %>
+                    <tr>
+                        <td class="h6">
+                            <%= menu.name %> <BR>
+                            <span class="h7"><%= menu.description %></span>
+                        </td>
+                        <td class="h6">
+                            <%= menu.price %> &euro;
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <% } %>
+                <% }); %>
+        </tbody>
+    </table>
+</div>
+</div>

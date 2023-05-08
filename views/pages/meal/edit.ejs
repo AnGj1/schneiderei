@@ -1,0 +1,19 @@
+<div class="container">
+    <form action="/meal/<%=meal.id%>/update" method="post">
+        <div>
+            <div class="form-group">
+                <label class="col-form-label-lg">Name</label>
+                <input type="text" class="form-control" maxlength="80" value="<%= meal.name %>" name="name">
+            </div>
+            <div class="form-group">
+                <label class="col-form-label-lg">Preis</label>
+                <input type="text" class="form-control" maxlength="8" value="<%= meal.price %>" name="price">
+            </div>
+            <div class="form-group">
+                <label class="col-form-label-lg">Beschreibung</label>
+                <input type="text" maxlength="255" class="form-control" size="40" value="<%= meal.description %>" name="description">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Aktualisieren</button>
+    </form>
+</div>

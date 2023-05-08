@@ -48,8 +48,7 @@ module.exports = {
 
   findOne: async function (req, res) {
     sails.log.debug("List single price....");
-    let customerId = parseInt(req.params.id);
-  let customer = await Kunden.findOne({ id: customerId });
+    let pricelist = await Pricelist.findOne({ id: req.params.id });
     res.view ('pages/pricelist/show', { pricelist: pricelist } );
   },
   

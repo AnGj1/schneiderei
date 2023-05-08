@@ -9,7 +9,7 @@ h1{
     margin-bottom: 1rem;
 }
 input:focus {
-    background-color: black;
+    background-color: rgb(141, 141, 141);
     color: white;
   }
  
