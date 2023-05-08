@@ -1,0 +1,33 @@
+<div class="image-wrapper">
+    <img src="images/kleinesBild.jpg" width="100%" alt="Bild Start">
+</div>
+
+<h1>Dienstleistungen</h1>
+
+<div>
+    <table class="table">
+        <tbody>
+            <% categories.forEach(function(category){ %>
+                <tr>
+                    <td colspan="3" class="h4">
+                        <%= category.name %> <BR>
+                    </td>
+                </tr>
+                <% if (category.pricelist) { %>
+                <% category.pricelist.forEach(function(offers){ %>
+                    <tr>
+                        <td class="h6">
+                            <%= offers.name %> <BR>
+                            <span class="h7"><%= offers.description %></span>
+                        </td>
+                        <td class="h6">
+                            <%= offers.price %> &euro;
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <% } %>
+                <% }); %>
+        </tbody>
+    </table>
+</div>
+</div>

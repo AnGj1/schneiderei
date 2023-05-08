@@ -9,7 +9,7 @@ const Sails = require("sails/lib/app/Sails");
 
 module.exports = {
   create: async function (req, res) {
-    sails.log.debug("Create new meal....")
+    sails.log.debug("Create new article....")
     let category = await Category.create(req.allParams());
     res.redirect('/category');
   },

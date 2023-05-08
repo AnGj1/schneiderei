@@ -44,9 +44,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-
-  'GET /speisekarte': { controller: 'MenuController', action: 'menu'},
+  '/': { view: 'pages/startpage' },
+  'GET /pricelist': { view: 'pages/price' },
+  
 
   /***************************************************************************
   *                                                                          *
@@ -61,17 +61,38 @@ module.exports.routes = {
   
   'GET /admin': { view: 'pages/admin' },
   
-  'GET /meal/new': { controller: 'MealController', action:'new' },
-  'POST /meal': { controller: 'MealController', action:'create' },
-  'GET /meal': 'MealController.find',
-  'GET /meal/show': 'meal.findOne',
+  
+  'POST /pricelist': { controller: 'PricelistController', action: 'create' },
+  'GET /pricelist/new': { controller: 'PricelistController', action: 'new' },
+  'GET /pricelist/:id': 'PricelistController.findOne',
+  'GET /pricelist': 'PricelistController.find',
 
-  'GET /meal/:id/edit': { controller: 'MealController', action: 'editOne' },
-  'POST /meal/:id/update': { controller: 'MealController', action: 'updateOne' },
-  'GET /meal/:id/destroy': { controller: 'MealController', action: 'destroyOne' },
- 
+  'GET /pricelist/:id/edit': { controller: 'PricelistController', action: 'editOne' },
+  'POST /pricelist/:id/update': { controller: 'PricelistController', action: 'updateOne' },
+  'GET /pricelist/:id/destroy': { controller: 'PricelistController', action: 'destroyOne' },
+  'POST /pricelist/create': { controller: 'PricelistController', action: 'create' },
+  'GET /pricelist/:id': { controller: 'PricelistController', action: 'findOne' },
+
+  'POST /duy': { controller: 'DuyController', action: 'create' },
+  'GET /duy/new': { controller: 'DuyController', action: 'new' }, /*neuen eintrag erstellen */
+  'GET /duy/:id': 'DuyController.findOne',
+  'GET /duy': 'DuyController.find',
+
+  'GET /duy/:id/edit': { controller: 'DuyController', action: 'editOne' },
+  'POST /duy/:id/update': { controller: 'DuyController', action: 'updateOne' },
+  'GET /duy/:id/destroy': { controller: 'DuyController', action: 'destroyOne' },
+
   'GET /category/new': { view: 'pages/category/new' },
-  'POST /category': { controller: 'CategoryController', action:'create' },
+  'POST /category': { controller: 'CategoryController', action: 'create' },
   'GET /category/:id/destroy': { controller: 'CategoryController', action: 'destroyOne' },
   'GET /category': { controller: 'CategoryController', action: 'find' },
+
+  'GET /kunden': { view: 'pages/kunden' },
+  'GET /kunden': 'KundendatenController.find',
+'POST /kunden': 'KundendatenController.create',
+'GET /kunden/new': { controller: 'KundendatenController', action: 'new' },
+'GET /kunden/:id': 'KundendatenController.findOne',
+'GET /kunden/:id/edit': 'KundendatenController.editOne',
+'POST /kunden/:id/update': 'KundendatenController.updateOne',
+'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
 };

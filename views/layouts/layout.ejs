@@ -33,15 +33,21 @@
     -->
 
       <!--STYLES-->
-      <link rel="stylesheet" href="/dependencies/bootstrap-green.min.css">
+      <link rel="stylesheet" href="/dependencies/bootstrap.min.css">
+      <link rel="stylesheet" href="/styles/duySheet.css">
       <link rel="stylesheet" href="/styles/importer.css">
-      <link rel="stylesheet" href="/styles/style.css">
+      <link rel="stylesheet" href="/styles/startpage.css">
+      <link rel="stylesheet" href="/styles/startseiteBody.css">
       <!--STYLES END-->
 </head>
 
 <body>
   <header class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between" purpose="page-header">
-    <a style="cursor: pointer;" class="navbar-brand mr-0" href="/"><img style="height: 20px;" class="logo" alt="NEW_APP_NAME logo" src="/images/logo.png"/></a>
+    <div class="logo">
+
+    <a href="/"><img id="logo" src="/images/needle.png" alt="Mein Logo" width="50" height="50"></a>
+    Bodensee Schneiderei
+  </div>
     <div class="navbar-nav flex-row">
       <!-- LOGGED-IN NAVIGATION -->
       <% if(req.me) { %>
@@ -85,24 +91,31 @@
     </div>
   </header>
   <%- body %>
-    <footer class="footer-container">
-      <div class="footer-item">
-        Strandbad Kattenhorn<BR>
-        Strandbadstr. 8<BR>
-        78337 Kattenhorn<BR>
-        <p class="kontakt">
-          Telefon 0049 7735 67770<BR>
-          strandbad@kattenhorn.de<BR>
-        </p>
+  <footer class="footer-clean">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-4 col-md-3 item">
+          <h3>Datenschutz</h3>
+          <ul>
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-md-3 item">
+          <h3>Impressum</h3>
+          <ul>
+            <li><a href="#">Telefon: 07531 2060</a></li>
+            <li><a href="#">Adresse: Alfred-Wachtel-Straße</a></li>
+            <li><a href="#">PLZ: 78462 Konstanz</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 item social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
       </div>
-      <div class="footer-item">
-        <ul>
-          <li>Preisliste</li>
-          <li>Impressum</li>
-          <li>Datenschutz</li>
-        </ul>
-      </div>
-    </footer>
+    </div>
+  </footer>
 
 
     <!--
@@ -172,6 +185,7 @@
     <!--SCRIPTS-->
     <script src="/dependencies/sails.io.js"></script>
     <script src="/dependencies/bootstrap.bundle.min.js"></script>
+    <script src="/dependencies/vue.global.js"></script>
     <!--SCRIPTS END-->
 </body>
 

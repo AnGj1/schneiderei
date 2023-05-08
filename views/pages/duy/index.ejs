@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <h1 class="text-center">Oft gestellte Fragen</h1>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <form action="/duy">
+      <label>Suche</label>
+      <input type="text" value="" length="20" name="q">
+      <button class="btn btn-primary" type="submit">Suche</button>
+  </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% duys.forEach(function(duy){ %>
+      <div class="col-md-6 mb-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= duy.titel %>
+            </h5>
+            <p class="card-text">
+              <%= duy.description %>
+            </p>
+            <a href="/duy/<%= duy.id %>" class=class="btn btn-primary">Anzeigen</a>
+            <a href="/duy/<%= duy.id %>/edit" class=class="btn btn-secondary">Ändern</a>
+            <a href="/duy/<%= duy.id %>/destroy" class=class="btn btn-primary">Löschen</a>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+  </div>
+  <div class="row justify-content-center">
+    <a href="/duy/new" class="btn btn-primary">Neuen Artikel hinzufügen</a>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <h1 class="text-center">Kundenverwaltung</h1>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <form action="/kunden">
+      <label>Suche</label>
+      <input type="text" value="" length="20" name="q">
+      <button class="btn btn-primary" type="submit">Suche</button>
+  </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% costumers.forEach(function(costumer){ %>
+      <div class="col-md-6 mb-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              Name: <%= costumer.name %> <br>
+              Nachnahme:  <%= costumer.nachnahme %><br>
+              Email: <%= costumer.email %><br>
+              Telefon: <%= costumer.telefon %><br>
+              Benutzername: <%= costumer.benutzerName %>
+            </h5>
+            <a href="/kunden/<%= costumer.id %>" class="btn btn-primary">Anzeigen</a>
+            <a href="/kunden/<%= costumer.id %>/edit" class="btn btn-secondary">Ändern</a>
+            <a href="/kunden/<%= costumer.id %>/destroy" class="btn btn-primary">Löschen</a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+  <div class="row justify-content-center">
+    <a href="/kunden/new" class="btn btn-primary">Neuen Kunden hinzufügen</a>
+  </div>
+</div>

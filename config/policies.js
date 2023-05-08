@@ -7,7 +7,7 @@
  * For more information on configuring policies, check out:
  * https://sailsjs.com/docs/concepts/policies
  */
-
+//sage wer was tun kann 
 module.exports.policies = {
 
   /***************************************************************************

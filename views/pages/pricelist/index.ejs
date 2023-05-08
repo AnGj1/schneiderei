@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Dienstleistungen</h1>
+
+    <form action="/pricelist">
+        <label>Suche</label>
+        <input type="text" value="" length="20" name="q">
+        <button class="btn btn-primary" type="submit">Suche</button>
+    </form>
+
+    <div class="item-content">
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Preis</th>
+                <th>Kategorie</th>
+                <th>Beschreibung</th>                    
+            </thead>
+            <tbody>
+                <% prices.forEach(function(pricelist){ %>
+                    <tr>
+                        <td>
+                            <%= pricelist.name %>
+                        </td>
+                        <td>
+                            <%= pricelist.price %>
+                        </td>
+                        <td>
+                            <% if(pricelist.category) { %>
+                                <%= pricelist.category.name %>
+                              <% } else { %>
+                                Keine Kategorie zugeordnet
+                              <% } %>
+                        </td>
+                        <td>
+                            <%= pricelist.description %>
+                        </td>
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>">Anzeigen</a></td>
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/edit">Ändern</a></td> 
+                        <td> <a class="btn btn-primary" href="/pricelist/<%= pricelist.id %>/destroy">Löschen</a></td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="/pricelist/new">Hinzufügen</a>
+    </div>
+</div>
+</div>

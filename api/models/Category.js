@@ -1,4 +1,3 @@
-// api/models/Category.js
 module.exports = {
     attributes: {
         name: {
@@ -6,14 +5,12 @@ module.exports = {
             columnType: 'varchar(80)',  
             required: true,
         },
-        ordernumber: {
-            type: 'number',  
-            columnType: 'integer',  
-            required: true,
-        },
-        meals: {
-            collection: 'meal',
+       
+        duys: {
+            collection: 'duy',
             via: 'category'
-        }
+        }, 
+        
+       
     }
   };
