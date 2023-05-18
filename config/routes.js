@@ -9,7 +9,7 @@
  */
 
 module.exports.routes = {
-   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
+  //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /signup':             { action: 'entrance/view-signup' },
@@ -44,7 +44,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/startpage' },
-  'GET /pricelist': { view: 'pages/price' },
+  'GET /pricelist': { view: 'pages/pricelist' },
   
 
   /***************************************************************************
@@ -63,7 +63,10 @@ module.exports.routes = {
   'POST /bewertung': { controller: 'BewertungController', action: 'create' },
   'GET /pricelist': { controller: 'PricelistController', action: 'index' },
 
-
+  'GET /faq': { view: 'pages/faq' },
+  'GET /welcome': { view: 'pages/welcome' },
+  'GET /datenschutz': { view: 'pages/datenschutz' },
+  'GET /contact': { view: 'pages/contact' },
 
   'POST /pricelist': { controller: 'PricelistController', action: 'create' },
   'GET /pricelist/new': { controller: 'PricelistController', action: 'new' },
@@ -92,12 +95,12 @@ module.exports.routes = {
 
   'GET /kunden': { view: 'pages/kunden' },
   'GET /kunden': 'KundendatenController.find',
-'POST /kunden': 'KundendatenController.create',
-'GET /kunden/new': { controller: 'KundendatenController', action: 'new' },
-'GET /kunden/:id': 'KundendatenController.findOne',
-'GET /kunden/:id/edit': 'KundendatenController.editOne',
-'POST /kunden/:id/update': 'KundendatenController.updateOne',
-'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
+  'POST /kunden': 'KundendatenController.create',
+  'GET /kunden/new': { controller: 'KundendatenController', action: 'new' },
+  'GET /kunden/:id': 'KundendatenController.findOne',
+  'GET /kunden/:id/edit': 'KundendatenController.editOne',
+  'POST /kunden/:id/update': 'KundendatenController.updateOne',
+  'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
 
 
 };

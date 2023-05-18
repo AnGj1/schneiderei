@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label class="col-form-label-lg">Kategorie</label>
-             <select class="form-select" name="category">
+             <select class="form-control" name="category" >
             <% categories.forEach(function(category){ %>
                 <option value="<%= category.id %>"><%= category.name %></option>
             <% }); %>

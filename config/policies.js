@@ -23,11 +23,11 @@ module.exports.policies = {
   'entrance/*': true,
   'account/logout': true,
 
-  MenuController: {
+  KundendatenController: {
     '*': true,
   },
 
-  MealController: {
+  DuyController: {
     '*': 'is-super-admin',
   },
   CategoryController: {
