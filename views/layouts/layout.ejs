@@ -37,12 +37,17 @@
       <link rel="stylesheet" href="/styles/importer.css">
       <link rel="stylesheet" href="/styles/startpage.css">
       <link rel="stylesheet" href="/styles/startseiteBody.css">
+      <!--STYLES END-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-      <!--STYLES END-->
 </head>
 
 <body>
+  <!--SCRIPTS-->
+  <script src="/dependencies/sails.io.js"></script>
+  <script src="/dependencies/bootstrap.bundle.min.js"></script>
+  <script src="/dependencies/vue.global.js"></script>
+  <!--SCRIPTS END-->
   <header class="navbar navbar-expand-sm navbar-nav data-bs-toggle flex-column flex-md-row justify-content-between" purpose="page-header">
     <div class="logo">
 
@@ -51,14 +56,16 @@
   </div>
     <div class="navbar-nav flex-row">
       <!-- LOGGED-IN NAVIGATION -->
-      <% if(req.me) { %>
+      <% if(req.me) { %> 
       <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/contact">Help</a>
+      <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/bewertung">Bewertung</a>
       <!-- Added Block für Super user Navigation-->
       <% if(req.me.isSuperAdmin) { %>
         <div class="nav-item dropdown d-none d-sm-block">
           <a class="nav-link dropdown-toggle" href="/admin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Admin</a>
           <div style="left: auto; right: 0;" class="dropdown-menu" aria-labelledby="header-account-menu-link">
+            <a class="dropdown-item" href="/admin">Administratives</a>
             <a class="dropdown-item" href="/pricelist">Preisliste</a>
             <a class="dropdown-item" href="/category">Kategorien</a>
           </div>
@@ -80,8 +87,9 @@
       <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/logout">Sign out</a>
       <% } else { %>
       <!-- LOGGED-OUT NAVIGATION -->
-      <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/faq">FAQ</a>
-      <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/login">Log in</a>
+      <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/aboutus">Über uns</a>
+      <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/price">Preise </a>
+      <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/contact">Kontakt </a>
       <!-- Only in desktop nav -->
       <div class="form-inline d-none ml-2 d-md-block" >
         <a class="btn btn-outline-info" href="/signup">Sign up</a>
@@ -112,7 +120,7 @@
             <li><a href="#">PLZ: 78462 Konstanz</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 item social">
+        <div class="col-lg-3 item social" id="socialmedia">
           <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
           <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>

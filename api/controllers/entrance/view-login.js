@@ -22,14 +22,16 @@ module.exports = {
 
 
   fn: async function () {
-
     if (this.req.me) {
-      throw {redirect: '/'};
+      const userRecord = await User.findOne({ id: this.req.me.id });
+      if (userRecord) {
+        throw { redirect: '/welcome?name=' + encodeURIComponent(userRecord.fullName) };
+      } else {
+        throw { redirect: '/' };
+      }
     }
-
     return {};
-
   }
-
-
+  
+  
 };

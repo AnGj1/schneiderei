@@ -1,6 +1,5 @@
 module.exports = {
 
-
   friendlyName: 'Login',
 
 
@@ -75,13 +74,14 @@ and exposed as \`req.me\`.)`
   },
 
 
-  fn: async function ({emailAddress, password, rememberMe}) {
+  fn: async function ({emailAddress, password, rememberMe, fullName}) {
 
     // Look up by the email address.
     // (note that we lowercase it to ensure the lookup is always case-insensitive,
     // regardless of which database we're using)
     var userRecord = await User.findOne({
       emailAddress: emailAddress.toLowerCase(),
+      fullName,
     });
 
     // If there was no matching user, respond thru the "badCombo" exit.
@@ -120,11 +120,9 @@ and exposed as \`req.me\`.)`
 //      await sails.helpers.broadcastSessionChange(this.req);
 //    }
 
-    if (!this.req.wantsJSON) {
-      throw {redirect: '/welcome'};
-    }
-
-
-  }
+if (!this.req.wantsJSON) {
+  throw { redirect: '/welcome?name=' + encodeURIComponent(userRecord.fullName) };
+} }
 
 };
+

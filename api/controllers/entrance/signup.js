@@ -97,8 +97,7 @@ the account verification message.)`,
     this.req.session.userId = newUserRecord.id;
   
     if (!this.req.wantsJSON) {
-      throw {redirect: '/'};
-    }
-  }
+      throw { redirect: '/welcome?name=' + encodeURIComponent(newUserRecord.fullName) };
+    } }
 
 };
