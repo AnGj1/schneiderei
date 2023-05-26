@@ -8,6 +8,7 @@
  * https://sailsjs.com/anatomy/config/routes-js
  */
 
+const { create } = require("sails-mysql");
 const AppointmentController = require("../api/controllers/AppointmentController");
 
 module.exports.routes = {
@@ -83,6 +84,8 @@ module.exports.routes = {
   'GET /pricelist/:id/destroy': { controller: 'PricelistController', action: 'destroyOne' },
   'POST /pricelist/create': { controller: 'PricelistController', action: 'create' },
   'GET /pricelist/:id': { controller: 'PricelistController', action: 'findOne' },
+  'GET /pricelist/show': 'isloggedinorpublic',
+
 
   'POST /duy': { controller: 'DuyController', action: 'create' },
   'GET /duy/new': { controller: 'DuyController', action: 'new' }, /*neuen eintrag erstellen */
@@ -113,6 +116,9 @@ module.exports.routes = {
     'GET /appointment/get': 'AppointmentController.read',
     'DELETE /appointment/:id/delete': 'AppointmentController.delete',
     'PUT /appointment/:id/update': 'AppointmentController.update',  
+
+    'GET /api/create' : {controller: 'AppointmentController', action: 'create'},
+    'POST /api/create': {controller: 'AppointmentController', action: 'create'}
   };
   
   

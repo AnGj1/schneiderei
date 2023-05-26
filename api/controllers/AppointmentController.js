@@ -9,6 +9,7 @@ module.exports = {
         await Appointment.create(params);
         res.redirect('/confirmation');
     },
+    
     /*create: async function (req, res) {
       try {
         const userId = req.session.userId;

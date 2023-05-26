@@ -11,24 +11,27 @@ export default {
   },
 
   methods: {
-    function (id) {
-      let url = new URL(origin + "/api/deleteorder");
-      let data = new FormData();
-      data.append("id", id);
+    createAppointment: function () {
+      let url = new URL(origin + "api/create");
+      const formData = new FormData();
+      formData.append("name", this.name);
+      formData.append("date", this.date);
+      formData.append("time", this.time);
+    
       fetch(url, {
         method: "POST",
-        body: data,
-      }).then((result) => {
-        let url = new URL(origin + '/api/order');
-        fetch(url)
+        body: formData,
+      })
+        .then((result) => {
+          let url = new URL(origin + 'api/find')
+          fetch(url)
           .then(res => res.json())
-          .then(data => this.orders = data)
+          .then(data => this.AppointmentsView = data)
           .then(this.alterVisible = true);
       });
     },
-    hideAlert() {
-      this.alterVisible = false;
-    },
+  },
+
     deleteAppointment: function (id) {
       let url = `${window.location.origin}/appointment/${id}/delete`;
 
@@ -45,7 +48,6 @@ export default {
           .then(data => this.appointments = data)
           .catch(e => console.error('There was an error deleting the appointment:', e));
     },
-  },
 
   created: function () {
     let url = new URL(`${window.location.origin}/appointment/get`);
