@@ -18,11 +18,9 @@ module.exports = {
 
 
     fn: async function (inputs) {
-
-            this.req.session.appointment = [];
+        this.req.session.appointment = {};
         return;
-
-    }
+      }
 
 
 };

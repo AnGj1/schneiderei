@@ -17,18 +17,19 @@
                     // Lesen Sie den Namen aus dem Query-Parameter
                     const urlParams = new URLSearchParams(window.location.search);
                     this.name = urlParams.get('name') || ''; // Wenn kein Name übergeben wurde, bleibt es ein leerer String
-                  }
+                  }, 
                 });
               
                 app.mount('#app');
               </script>
+
               <div class="col-md-6">
                 <p>Vereinbare jetzt einen Termin</p>
               </div>
               <div class="col-md-6">
                 <router-link to="/appointment">
                   <button type="button" class="btn btn-primary" style="margin-right: auto;">Jetzt Buchen</button>
-                </router-link> <router-view></router-view>
+                </router-link>
               </div>
               
           </div>
@@ -76,4 +77,21 @@
   </div> 
 
   
-             
+ <script>
+  const appointment = { template: '<div>Appointment</div>' };
+
+  const routes =[
+    {path: '/appointment', component: appointment}, 
+  ]
+  const router = VueRouter.createRouter({
+        // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+        history: VueRouter.createWebHashHistory(),
+        routes, // short for `routes: routes`
+    })
+    const Myapp = Vue.createApp({})
+    // Make sure to _use_ the router instance to make the
+    // whole app router-aware.
+    Myapp.use(router)
+
+    Myapp.mount('#app')
+ </script>

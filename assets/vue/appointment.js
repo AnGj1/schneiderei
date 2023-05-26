@@ -4,14 +4,14 @@ export default {
         action: '',
         date: '',
         time: '',
-        appointments: [],
+        appointment: [],
       };
     },
     created() {
-      let url = new URL(window.location.origin + '/appointments');
+      let url = new URL(window.location.origin + '/appointment');
       fetch(url)
         .then(res => res.json())
-        .then(data => this.appointments = data);
+        .then(data => this.appointment = data);
     },
     methods: {
       saveAppointment() {
@@ -21,7 +21,7 @@ export default {
           time: this.time
         };
   
-        let url = new URL(window.location.origin + '/appointments');
+        let url = new URL(window.location.origin + '/appointment');
         fetch(url, {
           method: 'POST',
           headers: {
@@ -33,7 +33,7 @@ export default {
           return result.json();
         })
         .then(data => {
-          this.appointments.push(data);
+          this.appointment.push(data);
           this.action = '';
           this.data = '';
           this.time = '';
@@ -47,7 +47,7 @@ export default {
         <form @submit.prevent="saveAppointment" class="my-4">
           <div>
             <label for="action">Aktion:</label>
-            <select id="action" v-model="selectedAction">
+            <select id="action" v-model="action">
               <option value="">Bitte wählen</option>
               <option value="abmessen">Abmessen (30 Minuten)</option>
               <option value="kuerzen">Kürzen (1 Stunde)</option>
@@ -57,12 +57,12 @@ export default {
   
           <div>
             <label for="date">Datum:</label>
-            <input type="date" id="date" v-model="selectedDate">
+            <input type="date" id="date" v-model="date">
           </div>
   
           <div>
             <label for="time">Uhrzeit:</label>
-            <input type="time" id="time" v-model="selectedTime">
+            <input type="time" id="time" v-model="time">
           </div>
   
           <button type="submit" class="btn btn-primary">Termin speichern</button>
@@ -70,7 +70,7 @@ export default {
   
         <h2>Freie Termine:</h2>
         <ul class="list-group">
-          <li class="list-group-item" v-for="appointment in appointments">
+          <li class="list-group-item" v-for="appointment in appointment">
             <div class="d-flex justify-content-between">
               <span>Aktion: {{ appointment.action }}</span>
               <span>Datum: {{ appointment.date }}</span>
