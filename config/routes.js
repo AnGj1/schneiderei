@@ -8,6 +8,8 @@
  * https://sailsjs.com/anatomy/config/routes-js
  */
 
+const AppointmentController = require("../api/controllers/AppointmentController");
+
 module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
@@ -106,11 +108,11 @@ module.exports.routes = {
   'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
   
   
-    'GET /appointment': { action: 'view-appointment' },
-    'POST /appointment': { action: 'appointment/create' },
-    'DELETE /appointment/delete': { action: 'appointment/delete' },
-    'GET /appointment/find': { action: 'appointment/find' },
-  
+    'GET /appointment': { view: 'pages/appointment' },
+    'POST /appointment': 'AppointmentController.create',
+    'GET /appointment/get': 'AppointmentController.read',
+    'DELETE /appointment/:id/delete': 'AppointmentController.delete',
+    'PUT /appointment/:id/update': 'AppointmentController.update',  
   };
   
   

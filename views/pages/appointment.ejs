@@ -1,0 +1,62 @@
+<div class="container">
+    <h1>Termin Buchen</h1>
+    <div id="app">
+    
+    </div>
+</div>
+<div class="container">
+  <h1 class="mt-4">Terminverwaltung</h1>
+
+  <form @submit.prevent="createAppointment" class="my-4">
+    <div>
+      <label for="action">Aktion:</label>
+      <select id="action" v-model="name">
+        <option value="">Bitte wählen</option>
+        <option value="abmessen">Abmessen (30 Minuten)</option>
+        <option value="kuerzen">Kürzen (1 Stunde)</option>
+        <option value="individual">Individual (2 Stunden)</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="date">Datum:</label>
+      <input type="date" id="date" v-model="date">
+    </div>
+
+    <div>
+      <label for="time">Uhrzeit:</label>
+      <input type="time" id="time" v-model="time">
+    </div>
+
+    <div>
+      <label for="description">Beschreibung:</label>
+      <input type="text" id="description" v-model="description">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Termin speichern</button>
+  </form>
+
+  <h2>Freie Termine:</h2>
+  <ul class="list-group">
+    <li class="list-group-item" v-for="appointment in appointments">
+      <div class="d-flex justify-content-between">
+        <span>Aktion: {{ appointment.name }}</span>
+        <span>Datum: {{ appointment.date }}</span>
+        <span>Uhrzeit: {{ appointment.time }}</span>
+        <span>Beschreibung: {{ appointment.description }}</span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script type="module">
+    
+    import Appointment from "/vue/appointment.vue";
+    console.log("Testddd");
+
+    const { createApp } = Vue;
+    let app = createApp({});
+    app.component("appointment", Appointment);
+    app.mount("#app");
+</script>
+

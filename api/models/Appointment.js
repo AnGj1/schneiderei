@@ -1,21 +1,31 @@
 module.exports = {
-    attributes: {
-      name: {
-        type: 'string',
-        required: true
-      },
-      date: {
-        type: 'string',
-        required: true
-      },
-      time: {
-        type: 'string',
-        required: true
-      },
-      description: {
-        type: 'string',
-        required: true
-      }
-    }
-  };
-  
+
+  attributes: {
+
+    name: {
+      type: 'string',
+      required: true,
+    },
+
+    date: {
+      type: 'string',
+      columnType: 'date',
+      required: true,
+    },
+
+    time: {
+      type: 'string',
+      columnType: 'time',
+      required: true,
+    },
+
+    description: {
+      type: 'string',
+      required: true,
+    },
+
+    user: { 
+      model: 'user',
+    },
+  },
+};

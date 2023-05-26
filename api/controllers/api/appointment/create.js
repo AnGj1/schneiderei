@@ -19,14 +19,6 @@ module.exports = {
       },
     },
     exits: {},
-    fn: async function (inputs) {
-      console.log("Create an appointment..");
-      this.req.session.appointment = {
-        "action": inputs.action,
-        "date": inputs.date,
-        "time": inputs.time
-      };
-      return;
-    }
+   
   };
   
