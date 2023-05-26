@@ -106,7 +106,7 @@ module.exports.routes = {
   'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
   
   
-    'GET /appointment': { action: 'appointment/view-appointment' },
+    'GET /appointment': { action: 'view-appointment' },
     'POST /appointment': { action: 'appointment/create' },
     'DELETE /appointment/delete': { action: 'appointment/delete' },
     'GET /appointment/find': { action: 'appointment/find' },
