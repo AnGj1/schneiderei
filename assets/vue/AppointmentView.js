@@ -1,4 +1,5 @@
 export default {
+  props: ['date'],
   data() {
     return {
       name: '',
@@ -8,29 +9,26 @@ export default {
       appointments: [],
     };
   },
-  methods: {
-    createAppointment: function () {
-      fetch('/appointment', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              name: this.name,
-              date: this.date,
-              time: this.time,
-              description: this.description
-          }),
-      })
-          .then(response => response.json())
-          .then(appointment => this.appointments.push(appointment));
-      
-      this.name = '';
-      this.date = '';
-      this.time = '';
-      this.description = '';
-    },
 
+  methods: {
+    function (id) {
+      let url = new URL(origin + "/api/deleteorder");
+      let data = new FormData();
+      data.append("id", id);
+      fetch(url, {
+        method: "POST",
+        body: data,
+      }).then((result) => {
+        let url = new URL(origin + '/api/order');
+        fetch(url)
+          .then(res => res.json())
+          .then(data => this.orders = data)
+          .then(this.alterVisible = true);
+      });
+    },
+    hideAlert() {
+      this.alterVisible = false;
+    },
     deleteAppointment: function (id) {
       let url = `${window.location.origin}/appointment/${id}/delete`;
 
@@ -56,8 +54,7 @@ export default {
       .then(data => this.appointments = data);
   },
 
-
-    template: `
+  template: `
     <div class="container">
     <h1 class="mt-4">Terminverwaltung</h1>
 
@@ -92,12 +89,13 @@ export default {
 
     <h2>Freie Termine:</h2>
     <ul class="list-group">
-      <li class="list-group-item" v-for="appointment in appointments">
+      <li class="list-group-item" v-for="appointment in appointments" :key="appointment.id">
         <div class="d-flex justify-content-between">
           <span>Aktion: {{ appointment.name }}</span>
           <span>Datum: {{ appointment.date }}</span>
           <span>Uhrzeit: {{ appointment.time }}</span>
           <span>Beschreibung: {{ appointment.description }}</span>
+          <button class="btn btn-danger" @click="deleteAppointment(appointment.id)">Termin löschen</button>
         </div>
       </li>
     </ul>
@@ -105,4 +103,3 @@ export default {
 
     `,
   };
- 

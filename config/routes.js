@@ -107,7 +107,7 @@ module.exports.routes = {
   'POST /kunden/:id/update': 'KundendatenController.updateOne',
   'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
   
-  
+ 
     'GET /appointment': { view: 'pages/appointment' },
     'POST /appointment': 'AppointmentController.create',
     'GET /appointment/get': 'AppointmentController.read',

@@ -2,7 +2,7 @@ export default {
     data() {
     },
     created() {
-      let url = new URL(origin + '/order/new');
+      let url = new URL(origin + '/confirmation');
       fetch(url)
         .then(res => res.json());
     },

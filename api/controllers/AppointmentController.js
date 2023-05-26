@@ -1,6 +1,15 @@
 
 module.exports = {
+
+   
     create: async function (req, res) {
+        sails.log.debug("Create appointment....")
+        let params = req.allParams();
+        sails.log.debug(params); // log the received params
+        await Appointment.create(params);
+        res.redirect('/confirmation');
+    },
+    /*create: async function (req, res) {
       try {
         const userId = req.session.userId;
         const appointment = await Appointment.create({ ...req.body, user: userId }).fetch();
@@ -9,7 +18,7 @@ module.exports = {
         console.error('Error:', error);
         return res.serverError();
       }
-    },
+    },*/
   
   
     read: async function (req, res) {
