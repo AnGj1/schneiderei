@@ -1,6 +1,6 @@
 
-  <title>Kundenbewertungen</title>
-  <div class="container-a">
+<title>Kundenbewertungen</title>
+<div class="container-a">
     <h1>Kundenbewertung abgeben</h1>
 
     <form id="review-form">
@@ -24,9 +24,9 @@
 
     <h2>Bewertungen:</h2>
     <ul id="reviews-list"></ul>
-  </div>
+</div>
 
-  <script>
+<script>
     function renderReviews() {
       const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
@@ -47,6 +47,17 @@
         `;
         reviewsList.appendChild(div);
       });
+    }
+
+    function setRating(rating) {
+        const stars = document.querySelectorAll('.stars span');
+        stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('star-filled');
+        } else {
+            star.classList.remove('star-filled');
+        }
+        });
     }
 
     function submitReview() {
@@ -92,4 +103,4 @@
     }
 
     renderReviews();
-  </script>
+</script>
