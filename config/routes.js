@@ -19,6 +19,8 @@ module.exports.routes = {
   'GET /account/password':   { action: 'account/view-edit-password' },
   'GET /account/profile':    { action: 'account/view-edit-profile' },
 
+  
+
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
@@ -31,6 +33,7 @@ module.exports.routes = {
   'POST  /updateProfile':                { action: 'account/update-profile' },
   'POST  /updatePassword':               { action: 'account/update-password' },
   'POST  /signup':                       { action: 'entrance/signup' },
+
 
 
 
@@ -101,8 +104,17 @@ module.exports.routes = {
   'GET /kunden/:id/edit': 'KundendatenController.editOne',
   'POST /kunden/:id/update': 'KundendatenController.updateOne',
   'GET /kunden/:id/destroy': 'KundendatenController.destroyOne',
-
-
-};
+  
+  'GET /appointment': { view: 'pages/appointment' },
+    'GET /appointment/new': 'AppointmentController.new',
+    'POST /appointment': 'AppointmentController.create',
+    'GET /appointment': 'AppointmentController.find',
+    'GET /appointment/:id/findOne': 'AppointmentController.findOne',
+    'POST /appointment/:id/destroyOne': 'AppointmentController.destroyOne',
+    'GET /appointment/:id/editOne': 'AppointmentController.editOne',
+    'POST /appointment/:id/updateOne': 'AppointmentController.updateOne',
+  };
+  
+  
 
 

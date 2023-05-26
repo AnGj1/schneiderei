@@ -21,6 +21,8 @@ text-align: right;
 
 .item-content .col-md-6 {
   padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .item-content button {
@@ -223,10 +225,10 @@ form {
   text-align: center;
   opacity: 0.6;
 }
-
 .block {
-  width: calc(33.33% - 20px);
-  height: 200px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   background-color: transparent;
   border: none;
   padding: 20px;
@@ -237,17 +239,36 @@ form {
   justify-content: center;
   text-align: center;
 }
-.container {
+
+.container-main {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: wrap; 
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.fancy-text {
+.bilderklein {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  display: block;
+  align-items: center;
+  margin-bottom: 5rem;
+}
 
-  font-size: 16px;
-  color: #54565c;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
-  font-weight:lighter;
+#bildklein {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .block {
+    width: calc(33.33% - 20px);
+    flex-grow: 1;
+    margin-right: 20px;
+  }
+
+
 }
