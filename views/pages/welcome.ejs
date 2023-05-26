@@ -1,97 +1,86 @@
 <div class="main-container">
   <div class="item-content">
-      <div class="container">
-          <div class="row">
-              <div id="app">
-               <h1 class="zentral"> Willkommen, {{ name }} bei der Bodensee Schneiderei </h1>
-              </div>
-          
-              <script>
-                const app = Vue.createApp({
-                  data() {
-                    return {
-                      name: '' // Initialisieren Sie den Namen als leeren String
-                    }
-                  },
-                  mounted() {
-                    // Lesen Sie den Namen aus dem Query-Parameter
-                    const urlParams = new URLSearchParams(window.location.search);
-                    this.name = urlParams.get('name') || ''; // Wenn kein Name übergeben wurde, bleibt es ein leerer String
-                  }, 
-                });
-              
-                app.mount('#app');
-              </script>
-
-              <div class="col-md-6">
-                <p>Vereinbare jetzt einen Termin</p>
-              </div>
-              <div class="col-md-6">
-                <router-link to="/appointment">
-                  <button type="button" class="btn btn-primary" style="margin-right: auto;">Jetzt Buchen</button>
-                </router-link>
-              </div>
-              
-          </div>
-   
-          <div class="bilderklein" >
-              <img id="bildklein" src="images/kleinesBild.jpg" width="100%" alt="Bild mitte">
-          </div>
-          <div class="main">
-          <div class="col-md-12" >     
-            <div class="container-main">
-          <div class="block">
-            <i class="fas fa-light fa-cut" style="color: #c18c02; font-size: 30px; color: #c18c02;
-            border: 1px solid #c18c02; border-radius: 50%;  padding: 6px;"></i> 
-            <p class="fancy-text">Inviduelle Designs</p>
-            <p class="fancy-text">Sie bestimmen den Schnitt und die Optik aus vielen möglichen Varianten.</p>
-          </div>
-        
-          <div class="block">
-            <i class="fas fa-sharp fa-light fa-tape" style="color: #c18c02; font-size: 30px; color: #c18c02;
-            border: 1px solid #c18c02; border-radius: 50%; padding: 6px;"></i>
-            <p class="fancy-text">Perfekte Passform</p>
-            <p class="fancy-text">Wir fertigen nach Ihren persönlichen Maßen.</p>
-          </div>
-        
-          <div class="block">
-            <i class="fas fa-coins fa-rotate-360" style="color: #c18c02; font-size: 30px; color: #c18c02;
-            border: 1px solid #c18c02; border-radius: 50%; padding: 6px;"></i>
-            <p class="fancy-text">Preisvorteil</p>
-            <p class="fancy-text">Maßkonfektion kostet nicht mehr als Qualitäten von der Stange!</p>
-          </div>
-       </div>
+    <div class="container">
+      <div class="row">
+        <div id="app">
+          <h1 class="zentral"> Willkommen, {{ name }} bei der Bodensee Schneiderei </h1>
+        </div>
+        <div class="col-md-6">
+          <p>Vereinbare jetzt einen Termin</p>
+        </div>
+        <div class="col-md-6">
+          <a href="/appointment">
+            <button type="button" class="btn btn-primary" style="margin-right: auto;">Jetzt Buchen</button>
+          </a>
+        </div>
       </div>
+      <div class="bilderklein">
+        <img id="bildklein" src="images/kleinesBild.jpg" width="100%" alt="Bild mitte">
+      </div>
+      <div class="main">
+        <div class="col-md-12">
+          <div class="container-main">
+            <div class="block">
+              <i class="fas fa-light fa-cut" style="color: #c18c02; font-size: 30px; color: #c18c02;
+            border: 1px solid #c18c02; border-radius: 50%;  padding: 6px;"></i>
+              <p class="fancy-text">Inviduelle Designs</p>
+              <p class="fancy-text">Sie bestimmen den Schnitt und die Optik aus vielen möglichen Varianten.</p>
+            </div>
+            <div class="block">
+              <i class="fas fa-sharp fa-light fa-tape" style="color: #c18c02; font-size: 30px; color: #c18c02;
+            border: 1px solid #c18c02; border-radius: 50%; padding: 6px;"></i>
+              <p class="fancy-text">Perfekte Passform</p>
+              <p class="fancy-text">Wir fertigen nach Ihren persönlichen Maßen.</p>
+            </div>
+            <div class="block">
+              <i class="fas fa-coins fa-rotate-360" style="color: #c18c02; font-size: 30px; color: #c18c02;
+            border: 1px solid #c18c02; border-radius: 50%; padding: 6px;"></i>
+              <p class="fancy-text">Preisvorteil</p>
+              <p class="fancy-text">Maßkonfektion kostet nicht mehr als Qualitäten von der Stange!</p>
+            </div>
           </div>
-       </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="bilder-container">
   <div class="bilder">
-      <img src="images/Anzug.jpg" width="100%" alt="Bild Anzug">
+    <img src="images/Anzug.jpg" width="100%" alt="Bild Anzug">
   </div>
-  
   <div class="bilder">
-      <img src="images/Kleid.jpg" width="100%" alt="Bild Klied">
+    <img src="images/Kleid.jpg" width="100%" alt="Bild Klied">
   </div>
-  </div> 
+</div>
+<script src="https://unpkg.com/vue@3.2.16/dist/vue.global.prod.js"></script>
+<script src="https://unpkg.com/vue-router@4.4.13/dist/vue-router.global.prod.js"></script>
 
-  
- <script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        name: ''
+      };
+    },
+    mounted() {
+      const urlParams = new URLSearchParams(window.location.search);
+      this.name = urlParams.get('name') || '';
+    },
+  });
+
+  app.mount('#app');
+
   const appointment = { template: '<div>Appointment</div>' };
 
-  const routes =[
-    {path: '/appointment', component: appointment}, 
-  ]
-  const router = VueRouter.createRouter({
-        // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
-        history: VueRouter.createWebHashHistory(),
-        routes, // short for `routes: routes`
-    })
-    const Myapp = Vue.createApp({})
-    // Make sure to _use_ the router instance to make the
-    // whole app router-aware.
-    Myapp.use(router)
+  const routes = [
+    { path: '/appointment', component: appointment },
+  ];
 
-    Myapp.mount('#app')
- </script>
+  const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes,
+  });
+
+  app.use(router);
+  app.mount('#app');
+</script>
