@@ -32,7 +32,7 @@ export default {
         <h4 class="text-primary">Kontaktdaten:</h4>
         <p class="text-left">Telefon: +49 7531 2844611</p>
         <p class="text-left">E-Mail: info@schneiderei.de</p>
-        <p class="text-left">Adresse: Neugasse 21, 78462 Konstanz</p>
+        <p class="text-left">Adresse: Alfred-Wachtel-Straße 8, 78462 Konstanz</p>
         <h4 class="text-primary">Öffnungszeiten:</h4>
         <p class="text-left">Montag - Freitag: 9:00 - 18:30 Uhr</p>
         <p class="text-left">Samstag: 09:00 - 18:00 Uhr</p>
