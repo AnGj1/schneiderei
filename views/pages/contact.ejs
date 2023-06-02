@@ -1,41 +1,39 @@
-<body>
-  <div class="container">
-    <h1 class="mt-4">Kontakt</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <form>
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">E-Mail-Adresse:</label>
-            <input type="email" class="form-control" id="email" required>
-          </div>
-          <div class="form-group">
-            <label for="subject">Betreff:</label>
-            <input type="text" class="form-control" id="subject" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Nachricht:</label>
-            <textarea class="form-control" id="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Nachricht senden</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <h4 class="text-primary">Kontaktdaten:</h4>
-        <p class="text-left">Telefon: +49 7531 2844611</p>
-        <p class="text-left">E-Mail: info@schneiderei.de</p>
-        <p class="text-left">Adresse: Neugasse 21, 78462 Konstanz</p>
-        <h4 class="text-primary">Öffnungszeiten:</h4>
-        <p class="text-left">Montag - Freitag: 9:00 - 18:30 Uhr</p>
-        <p class="text-left">Samstag: 09:00 - 18:00 Uhr</p>
-        <h4 class="text-primary">Folgen Sie uns:</h4>
-        <a href="https://www.facebook.com" class="btn btn-secondary mr-2">Facebook</a>
-        <a href="https://www.instagram.com" class="btn btn-secondary">Instagram</a>
-      </div>
-    </div>
-  </div>
-</body>
 
+<script type="module">
+  import contact from './vue/map.js'
+  const { createApp } = Vue
+  createApp(contact).mount("#app")
+</script>
+
+<!--The div element for the map -->
+<div id="app"></div>
+<div id="map"></div>
+
+<!--
+  The `defer` attribute causes the callback to execute after the full HTML
+  document has been parsed. For non-blocking uses, avoiding race conditions,
+  and consistent behavior across browsers, consider loading using Promises
+  with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+  -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoFSkKuQ9lVL_JWJc2kd2npLv0SDcuj1k&callback=initMap"
+  defer
+></script>
+
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: 47.6687209523273, lng: 9.17060700793599 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
+}
+</script>

@@ -118,7 +118,12 @@ module.exports.routes = {
     'PUT /appointment/:id/update': 'AppointmentController.update',  
 
     'GET /api/create' : {controller: 'AppointmentController', action: 'create'},
-    'POST /api/create': {controller: 'AppointmentController', action: 'create'}
+    'POST /api/create': {controller: 'AppointmentController', action: 'create'},
+
+    'GET /gallery': {view: 'pages/gallery'},
+    'GET /faq' :   {view: 'pages/faq'}, 
+
+  
   };
   
   
