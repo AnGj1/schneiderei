@@ -1,12 +1,19 @@
-<body>
+
   <div class="container">
     <h1>Häufig gestellte Fragen</h1>
+    <input type="text" id="searchInput" placeholder="Suche nach Stichwort">
+    <select id="filterSelect">
+      <option value="all">Alle</option>
+      <option value="question">Fragen</option>
+      <option value="answer">Antworten</option>
+    </select>
+
     <div class="accordion" id="accordionExample">
       <div class="card">
         <div class="card-header" id="headingOne">
           <h2 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Frage 1: Kann ich auch ohne Termin vorbei kommen?
+              Kann ich auch ohne Termin vorbei kommen?
             </button>
           </h2>
         </div>
@@ -21,7 +28,7 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Frage 2: Wie lange dauert es bis ich meine gekürzte Hose abholen kann?
+             Wie lange dauert es bis ich meine gekürzte Hose abholen kann?
             </button>
           </h2>
         </div>
@@ -36,7 +43,7 @@
         <div class="card-header" id="headingThree">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Frage 3: Mein Pullover hat ein Loch. Kann ich Ihnen auch Fotos schicken?
+              Mein Pullover hat ein Loch. Kann ich Ihnen auch Fotos schicken?
             </button>
           </h2>
         </div>
@@ -46,12 +53,70 @@
             Nein, um das Ausmaß der Beschädigung einschätzen zu können, muss ich das Kleidungsstück genauer betrachten, und das ist leider nicht möglich mit einem Foto.          </div>
         </div>
       </div>
+
+
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+             Die Schritte wie Sie ihre Taille richtig abmessen.
+            </button>
+          </h2>
+        </div>
+        
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+<p>1.Verwenden Sie ein flexibles Maßband: Verwenden Sie ein flexibles Maßband aus Stoff oder Kunststoff, das sich um Ihren Körper leicht biegen lässt.</p>
+
+<p>2.Sie Ihren natürlichen Taillenumfang: Stehen Sie aufrecht und entspannt. Lokalisieren Sie Ihren natürlichen Taillenbereich, der sich normalerweise oberhalb des Bauchnabels und unterhalb der untersten Rippe befindet.</p>
+
+<p>3.Positionieren Sie das Maßband: Legen Sie das Maßband um Ihre Taille, sodass es parallel zum Boden verläuft. Achten Sie darauf, dass das Maßband weder zu locker noch zu fest sitzt.</p>
+
+<p>4.Atmen Sie normal: Atmen Sie normal und vermeiden Sie es, Ihren Bauch einzuziehen oder zu halten. Dies gewährleistet eine genaue Messung.</p>
+
+<p>5.Lesen Sie den Umfang ab: Stellen Sie sicher, dass das Maßband glatt und gerade um Ihren Körper liegt, ohne dass es sich verdreht oder zu straff gezogen wird. Lesen Sie den Umfang an der Stelle ab, an der sich das Maßband überlappt.</p>
+
+<p>6.Wiederholen Sie den Vorgang: Um sicherzugehen, wiederholen Sie den Messvorgang ein oder zwei Mal, um konsistente Ergebnisse zu erzielen. Nehmen Sie den Durchschnitt der Messungen, um die genaueste Taillegröße zu erhalten.</p></div>
+        </div>
+      </div>
     </div>
   </div>
+  
   
   
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const filterSelect = document.getElementById('filterSelect');
+    const cards = Array.from(document.getElementsByClassName('card'));
+    
+    searchInput.addEventListener('keyup', filterFAQ);
+    filterSelect.addEventListener('change', filterFAQ);
+    
+    function filterFAQ() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const filter = filterSelect.value;
+      
+      cards.forEach(card => {
+        const question = card.querySelector('.btn-link').textContent.toLowerCase();
+        const answer = card.querySelector('.card-body').textContent.toLowerCase();
+        
+        const matchQuestion = question.includes(searchTerm);
+        const matchAnswer = answer.includes(searchTerm);
+        
+        let displayCard = true;
+        
+        if (filter === 'question') {
+          displayCard = matchQuestion;
+        } else if (filter === 'answer') {
+          displayCard = matchAnswer;
+        } else if (filter === 'all') {
+          displayCard = matchQuestion || matchAnswer;
+        }
+        
+        card.style.display = displayCard ? 'block' : 'none';
+      });
+    }
+  </script>
