@@ -1,5 +1,5 @@
 
-<title>Kundenbewertungen</title>
+<!--<title>Kundenbewertungen</title>
 <div class="container-a">
     <h1>Kundenbewertung abgeben</h1>
 
@@ -103,4 +103,95 @@
     }
 
     renderReviews();
+</script> -->
+<title>Kundenbewertungen</title>
+<div id="app" class="container-a">
+    <h1>Kundenbewertung abgeben</h1>
+
+    <form @submit.prevent="submitReview">
+      <label for="name">Name:</label>
+      <input type="text" id="name" v-model="name"><br>
+
+      <label for="rating">Bewertung:</label>
+      <div class="stars">
+        <span @click="setRating(1)" :class="{ 'star-filled': rating >= 1 }"></span>
+        <span @click="setRating(2)" :class="{ 'star-filled': rating >= 2 }"></span>
+        <span @click="setRating(3)" :class="{ 'star-filled': rating >= 3 }"></span>
+        <span @click="setRating(4)" :class="{ 'star-filled': rating >= 4 }"></span>
+        <span @click="setRating(5)" :class="{ 'star-filled': rating >= 5 }"></span>
+      </div><br>
+
+      <label for="comment">Kommentar:</label><br>
+      <textarea id="comment" v-model="comment"></textarea><br>
+
+      <button type="submit" class="btn btn-primary">Bewertung abgeben</button>
+    </form>
+
+    <h2>Bewertungen:</h2>
+    <ul>
+      <li v-for="(review, index) in reviews" :key="index" class="review">
+        <p>{{ review.author }}</p>
+        <p>{{ review.comment }}</p>
+        <p>{{ review.rating }}/5 Sterne</p>
+        <div class="review-actions">
+          <button class="btn btn-primary" @click="editReview(index)">Bearbeiten</button>
+          <button class="btn btn-primary" @click="deleteReview(index)">Löschen</button>
+        </div>
+      </li>
+    </ul>
+</div>
+
+<style>
+  .stars span {
+    cursor: pointer;
+  }
+  .stars span.star-filled {
+    color: gold;
+  }
+</style>
+
+<script src="https://unpkg.com/vue@3.3.1"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        name: '',
+        rating: 0,
+        comment: '',
+        reviews: JSON.parse(localStorage.getItem('reviews')) || []
+      }
+    },
+    methods: {
+      setRating(rating) {
+        this.rating = rating;
+      },
+      submitReview() {
+        const newReview = {
+          author: this.name,
+          comment: this.comment,
+          rating: this.rating,
+        };
+
+        this.reviews.push(newReview);
+        localStorage.setItem('reviews', JSON.stringify(this.reviews));
+
+        this.name = '';
+        this.comment = '';
+        this.rating = 0;
+      },
+      deleteReview(index) {
+        this.reviews.splice(index, 1);
+        localStorage.setItem('reviews', JSON.stringify(this.reviews));
+      },
+      editReview(index) {
+        const comment = prompt('Bearbeiten Sie Ihren Kommentar:', this.reviews[index].comment);
+        if (comment !== null) {
+          this.reviews[index].comment = comment;
+          localStorage.setItem('reviews', JSON.stringify(this.reviews));
+        }
+      }
+    }
+  });
+
+  app.mount('#app');
 </script>

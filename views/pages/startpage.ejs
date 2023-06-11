@@ -43,6 +43,15 @@
                 </div>
             </section>
             
+            <p class="kunden">Unsere Kundenbewertungen<p>
+            <div id="list"class="reviews-container">
+                <div v-for="(review, index) in reviews" :key="index" class="review">
+                    <div class="review-header">
+                        <p class="review-author">{{ review.author }}</p>
+                        <p class="review-rating">{{ review.rating }}/5 Sterne</p>
+                    </div>
+                    <p class="review-comment">{{ review.comment }}</p>
+        </div>
        
         </div>
     </div>
@@ -57,6 +66,28 @@
     </div>
     </div>
 
+ 
+   
+    <script src="https://unpkg.com/vue@3.3.1"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                reviews: []
+            }
+        },
+        mounted() {
+            this.getReviews();
+        },
+        methods: {
+            getReviews() {
+                const storedReviews = localStorage.getItem('reviews');
+                if (storedReviews) {
+                    this.reviews = JSON.parse(storedReviews);
+                }
+            }
+        }
+    });
 
-
-               
+    app.mount('#list');
+</script>
