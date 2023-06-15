@@ -9,7 +9,7 @@
                     Name
                 </div> 
                 <div class="col-10">
-                    <%= pricelist.name %>
+                    <%= Pricelist.name %>
                 </div>
             </div>
             <div class="row">
@@ -17,7 +17,7 @@
                     Preis
                 </div> 
                 <div class="col-10">
-                    <%= pricelist.price %>
+                    <%= Pricelist.price %>
                 </div>
             </div>
             <div class="row">
@@ -25,16 +25,16 @@
                     Beschreibung
                 </div> 
                 <div class="col-10">
-                    <%= pricelist.description %>
+                    <%= Pricelist.description %>
                 </div>
             </div>
-            <% if(pricelist.category) { %>
+            <% if(Pricelist.category) { %>
                 <div class="row">
                     <div class="col-2">
                         Kategorie
                     </div> 
                     <div class="col-10">
-                        <%= pricelist.category.name %>
+                        <%= Pricelist.category.name %>
                     </div>
                 </div>
                 <% } %>

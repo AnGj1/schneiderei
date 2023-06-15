@@ -84,7 +84,8 @@ module.exports.routes = {
   'GET /pricelist/:id/destroy': { controller: 'PricelistController', action: 'destroyOne' },
   'POST /pricelist/create': { controller: 'PricelistController', action: 'create' },
   'GET /pricelist/:id': { controller: 'PricelistController', action: 'findOne' },
-  'GET /pricelist/show': 'isloggedinorpublic',
+  'GET /pricelist': { view:'pages/pricelist/show' },
+  'GET/pricelist/show': 'PricelistController.find',
 
 
   'POST /duy': { controller: 'DuyController', action: 'create' },

@@ -8,7 +8,7 @@
 const Sails = require("sails/lib/app/Sails");
 
 module.exports = {
-   create: async function (req, res) {
+   /**create: async function (req, res) {
       sails.log.debug("Create pricelist....");
       let params = req.allParams();
       //params.admin = req.session.admin.id;
@@ -72,8 +72,8 @@ module.exports = {
     await Pricelist.updateOne({id: req.params.id}).set(params);
     res.redirect ('/pricelist' );
   },
-};
-/**create: async function (req, res) {
+};**/
+create: async function (req, res) {
   sails.log.debug("Create pricelist....");
   let params = req.allParams();
   await Pricelist.create(params);
@@ -124,5 +124,5 @@ updateOne: async function (req, res) {
   await Pricelist.updateOne({id: req.params.id}).set(params);
   res.redirect ('/pricelist' );
 },
-};**/
+};
 
