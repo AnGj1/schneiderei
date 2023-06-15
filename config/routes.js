@@ -50,7 +50,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/startpage' },
-  'GET /pricelist': { view: 'pages/pricelist' },
+  'GET /prices': { controller: 'PricelistController', action: 'find'},
   
 
   /***************************************************************************

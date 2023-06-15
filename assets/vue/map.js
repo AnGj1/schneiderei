@@ -1,6 +1,8 @@
 export default {
     methods: {
-    
+      submittedForm() {
+        // Aktionen, die nach dem Absenden des Formulars ausgeführt werden sollen
+      }
     },
   
     template: `
