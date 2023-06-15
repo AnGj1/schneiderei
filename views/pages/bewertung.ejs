@@ -105,50 +105,41 @@
     renderReviews();
 </script> -->
 <title>Kundenbewertungen</title>
-<div id="app" class="container-a">
-    <h1>Kundenbewertung abgeben</h1>
+<div id="app" class="container">
+  <h1>Kundenbewertung abgeben</h1>
 
-    <form @submit.prevent="submitReview">
-      <label for="name">Name:</label>
-      <input type="text" id="name" v-model="name"><br>
+  <form @submit.prevent="submitReview">
+    <label for="name">Name: {{ name }}</label>
+    <input type="text" id="name" v-model="name">
 
-      <label for="rating">Bewertung:</label>
-      <div class="stars">
-        <span @click="setRating(1)" :class="{ 'star-filled': rating >= 1 }"></span>
-        <span @click="setRating(2)" :class="{ 'star-filled': rating >= 2 }"></span>
-        <span @click="setRating(3)" :class="{ 'star-filled': rating >= 3 }"></span>
-        <span @click="setRating(4)" :class="{ 'star-filled': rating >= 4 }"></span>
-        <span @click="setRating(5)" :class="{ 'star-filled': rating >= 5 }"></span>
-      </div><br>
+    <label for="rating">Bewertung:</label>
+    <div class="stars">
+      <span @click="setRating(1)" :class="{ 'star-filled': rating >= 1 }"></span>
+      <span @click="setRating(2)" :class="{ 'star-filled': rating >= 2 }"></span>
+      <span @click="setRating(3)" :class="{ 'star-filled': rating >= 3 }"></span>
+      <span @click="setRating(4)" :class="{ 'star-filled': rating >= 4 }"></span>
+      <span @click="setRating(5)" :class="{ 'star-filled': rating >= 5 }"></span>
+    </div><br>
 
-      <label for="comment">Kommentar:</label><br>
-      <textarea id="comment" v-model="comment"></textarea><br>
+    <label for="comment">Kommentar:</label><br>
+    <textarea id="comment" v-model="comment"></textarea><br>
 
-      <button type="submit" class="btn btn-primary">Bewertung abgeben</button>
-    </form>
+    <button type="submit" class="btn btn-primary">Bewertung abgeben</button>
+  </form>
 
-    <h2>Bewertungen:</h2>
-    <ul>
-      <li v-for="(review, index) in reviews" :key="index" class="review">
-        <p>{{ review.author }}</p>
-        <p>{{ review.comment }}</p>
-        <p>{{ review.rating }}/5 Sterne</p>
-        <div class="review-actions">
-          <button class="btn btn-primary" @click="editReview(index)">Bearbeiten</button>
-          <button class="btn btn-primary" @click="deleteReview(index)">Löschen</button>
-        </div>
-      </li>
-    </ul>
+  <h2>Bewertungen:</h2>
+  <ul>
+    <li v-for="(review, index) in reviews" :key="index" class="review">
+      <p>{{ review.name }}</p>
+      <p>{{ review.comment }}</p>
+      <p>{{ review.rating }}/5 Sterne</p>
+      <div class="review-actions">
+        <button class="btn btn-primary" @click="editReview(index)" style="margin-right: 1rem;">Bearbeiten</button>
+        <button class="btn btn-primary" @click="deleteReview(index)">Löschen</button>
+      </div>
+    </li>
+  </ul>
 </div>
-
-<style>
-  .stars span {
-    cursor: pointer;
-  }
-  .stars span.star-filled {
-    color: gold;
-  }
-</style>
 
 <script src="https://unpkg.com/vue@3.3.1"></script>
 <script>
@@ -158,16 +149,21 @@
         name: '',
         rating: 0,
         comment: '',
-        reviews: JSON.parse(localStorage.getItem('reviews')) || []
+        reviews: JSON.parse(localStorage.getItem('reviews')) || [],
       }
     },
-    methods: {
+    mounted() {
+      const urlParams = new URLSearchParams(window.location.search);
+      this.name = urlParams.get('name') || '';
+  },
+  methods: {
+  
       setRating(rating) {
         this.rating = rating;
       },
       submitReview() {
         const newReview = {
-          author: this.name,
+          name: this.name,
           comment: this.comment,
           rating: this.rating,
         };
@@ -192,6 +188,5 @@
       }
     }
   });
-
   app.mount('#app');
 </script>

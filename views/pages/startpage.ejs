@@ -45,7 +45,7 @@
             
             <p class="kunden">Unsere Kundenbewertungen<p>
             <div id="list"class="reviews-container">
-                <div v-for="(review, index) in reviews" :key="index" class="review">
+                <div v-for="(review, index) in displayedReviews" :key="index" class="review">
                     <div class="review-header">
                         <p class="review-author">{{ review.author }}</p>
                         <p class="review-rating">{{ review.rating }}/5 Sterne</p>
@@ -73,7 +73,8 @@
     const app = Vue.createApp({
         data() {
             return {
-                reviews: []
+                reviews: [], 
+                displayedReviews:[],
             }
         },
         mounted() {
@@ -82,12 +83,13 @@
         methods: {
             getReviews() {
                 const storedReviews = localStorage.getItem('reviews');
-                if (storedReviews) {
-                    this.reviews = JSON.parse(storedReviews);
-                }
-            }
-        }
-    });
+      if (storedReviews) {
+        this.reviews = JSON.parse(storedReviews);
+        this.displayedReviews = this.reviews.slice(0, 3); // Nur die ersten drei Bewertungen anzeigen
+      }
+    }
+  }
+});
 
     app.mount('#list');
 </script>

@@ -7,7 +7,7 @@
       <form action="signup" method="POST">
         <div class="form-group">
           <label for="full-name">Full name</label>
-          <input class="form-control" id="full-name" name="fullName" type="text"  placeholder="Sturgis P. Sturgeon" autocomplete="name" focus-first>
+          <input class="form-control" id="full-name" name="fullName" type="text"  placeholder="Sturgis P. Sturgeon" autocomplete="name" focus-first v-model="name">
           <div class="invalid-feedback">Please enter your full name.</div>
         </div>
         <div class="form-group">
@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<script>
+<!--<script>
   const { createApp } = Vue
   createApp({
       data() {
@@ -66,4 +66,26 @@
       }
   }).mount("#app")
 </script>
-<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %> -->
+<script src="https://unpkg.com/vue@3.3.1"></script>
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      name: ''
+    };
+  },
+  methods: {
+    login() {
+      // Führen Sie hier Ihre Anmelde-Logik aus
+      // Speichern Sie den Benutzernamen in einer Variable oder im Local Storage
+      // Beispiel: localStorage.setItem('username', this.username);
+      
+      // Weiterleitung zur Bewertungsseite
+      window.location.href = '/bewertung?name=' + encodeURIComponent(this.name);
+    }
+  }
+});
+
+app.mount('#app');
+</script>

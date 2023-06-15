@@ -431,6 +431,16 @@ form {
 
 }
 
+#li .review{
+ width: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  border-radius: 10px; 
+}
+
 .review:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -473,4 +483,10 @@ form {
 #list{
   background-color: #fff;
   align-items: center;
+}
+.stars span {
+  cursor: pointer;
+}
+.stars span.star-filled {
+  color: gold;
 }
