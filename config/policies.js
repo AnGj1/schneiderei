@@ -22,6 +22,7 @@ module.exports.policies = {
   // Bypass the `is-logged-in` policy for:
   'entrance/*': true,
   'account/logout': true,
+  //'pricelist/show' : true,
 
   KundendatenController: {
     '*': true,
@@ -32,6 +33,15 @@ module.exports.policies = {
   },
   CategoryController: {
     '*': 'is-super-admin',
+  }, 
+  PricelistController:{
+    'create':'is-super-admin',
+    'new': 'is-super-admin', 
+    'find': true,
+    'findOne': 'is-super-admin' ,
+    'editOne': 'is-super-admin',
+    'destroyOne':'is-super-admin',
+    'updateOne':'is-super-admin',
   }
 
   
