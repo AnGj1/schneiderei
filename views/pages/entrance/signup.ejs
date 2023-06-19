@@ -1,91 +1,95 @@
-<div id="signup">
-  <div class="container-fluid pt-5 pb-5">
-    <h1 class="text-center">Create an account</h1>
-    <div style="max-width: 450px;" class="mx-auto" >
-      <p class="text-center">Let's get started! Becoming a member is free and only takes a few minutes.</p>
-      <hr/>
-      <form action="signup" method="POST">
-        <div class="form-group">
-          <label for="full-name">Full name</label>
-          <input class="form-control" id="full-name" name="fullName" type="text"  placeholder="Sturgis P. Sturgeon" autocomplete="name" focus-first v-model="name">
-          <div class="invalid-feedback">Please enter your full name.</div>
+<div id="app">
+  <div id="signup">
+    <div class="container-fluid pt-5 pb-5">
+      <h1 class="text-center">Create an account</h1>
+      <div style="max-width: 450px;" class="mx-auto">
+        <hr/>
+        <p class="text-center">Let's get started! Becoming a member is free and only takes a few minutes.</p>
+        <hr/>
+        <div style="max-width: 450px;" class="mx-auto">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input class="form-control" id="fullName" v-model="fullName" type="text" placeholder="Sturgis P. Sturgeon">
+            <div class="invalid-feedback">Please enter your full name.</div>
+          </div>
+          <div class="form-group">
+            <label for="emailAddress">Email</label>
+            <input class="form-control" id="emailAddress" v-model="emailAddress" type="email" placeholder="sturgeon@example.com">
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" v-model="password" type="password" placeholder="••••••••">
+            <div class="invalid-feedback">Please enter a password.</div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input class="form-control" id="confirmPassword" v-model="confirmPassword" type="password" placeholder="••••••••">
+            <div class="invalid-feedback">Your password and confirmation do not match.</div>
+          </div>
+          <div class="error-container btn btn-outline-danger" v-if="errorMessage !== ''">
+            <span>{{errorMessage}}</span>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary btn-lg btn-block" @click="register">Create Account</button>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email-address">Email address</label>
-          <input class="form-control" id="emaila-address" name="emailAddress" type="email"  placeholder="sturgeon@example.com" autocomplete="email">
-          <div class="invalid-feedback">Please enter a valid email address.</div>
-        </div>
-        <div class="form-group">
-          <label for="password">Choose a password</label>
-          <input class="form-control" id="password" name="password" type="password" v-model="password" placeholder="••••••••" autocomplete="new-password">
-          <div class="invalid-feedback">Please enter a password.</div>
-        </div>
-        <div class="form-group">
-          <label for="confirm-password">Confirm password</label>
-          <input class="form-control" id="confirm-password" name="confirmPassword" type="password"  v-model="password" placeholder="••••••••" autocomplete="new-password">
-          <div class="invalid-feedback">Your password and confirmation do not match.</div>
-          <div class="mt-4">
-            <span v-bind:class="qualityclass">Password Quality</h4> <!--qualityklass ist ein attribut welches automatisch benutzt wird-->
-        </div>
-        </div>
-        <div class="form-group form-check">
-          <input class="form-check-input" id="terms-agreement" name="termsAgreement" type="checkbox" v-model="formData.agreed">
-          <label for="terms-agreement" class="form-check-label">I have read &amp; agree to the <a target="_blank" href="/terms">terms of service</a>.</label>
-        </div>
-        <span>It looks like there's already an account with your email address. If you forgot your password, you can recover it <a href="password/forgot">here</a>.</span>
-        <div class="form-group">
-          <button type="submit" class="btn-dark btn-lg btn-block">Create account</button>
-        </div>
-      </ajax>
+      </div>
       <p class="text-center">Have an account? <a href="/login">Sign in</a></p>
     </div>
   </div>
 </div>
 
-<!--<script>
+<script>
   const { createApp } = Vue
   createApp({
-      data() {
-          return {
-              password: "",
-              }
-      },
-      methods: {
-          reset: function () {
-              this.password = "";
-          }
-      },
-      computed: {
-          qualityclass () {
-              if (this.password.length > 8) {
-                  return "alert alert-success";
-              } else {
-                  return "alert alert-danger";
-              }
-          }
+    data() {
+      return {
+        fullName: "",
+        emailAddress: "",
+        password: "",
+        confirmPassword: "",
+        errorMessage: ""
       }
-  }).mount("#app")
-</script>
-<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %> -->
-<script src="https://unpkg.com/vue@3.3.1"></script>
-<script>
-const app = Vue.createApp({
-  data() {
-    return {
-      name: ''
-    };
-  },
-  methods: {
-    login() {
-      // Führen Sie hier Ihre Anmelde-Logik aus
-      // Speichern Sie den Benutzernamen in einer Variable oder im Local Storage
-      // Beispiel: localStorage.setItem('username', this.username);
-      
-      // Weiterleitung zur Bewertungsseite
-      window.location.href = '/bewertung?name=' + encodeURIComponent(this.name);
-    }
-  }
-});
+    },
+    methods: {
+      register: function() {
+        console.log("Registering...");
 
-app.mount('#app');
+        if (this.fullName === "") {
+          this.errorMessage = "Name can not be empty!";
+          return;
+        }
+
+        const emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!this.emailAddress.toLowerCase().match(emailPattern)) {
+          this.errorMessage = "Not a valid email";
+          return;
+        }
+
+        if (this.password.length < 8) {
+          this.errorMessage = "Password needs a minimum of 8 characters";
+          return;
+        }
+
+        if (this.password !== this.confirmPassword) {
+          this.errorMessage = "Passwords are not equal!";
+          return;
+        }
+
+        let url = new URL(`${window.location.origin}/signup`);
+        let data = new FormData();
+        data.append("fullName", this.fullName);
+        data.append("emailAddress", this.emailAddress);
+        data.append("password", this.password);
+        fetch(url, { method: "POST", body: data }).then((result) => {
+          if (result.ok) {
+            window.location.href = window.location.origin;
+          } else {
+            this.errorMessage = "Oops! Something went wrong";
+          }
+        });
+      }
+    }
+  }).mount("#app");
 </script>
