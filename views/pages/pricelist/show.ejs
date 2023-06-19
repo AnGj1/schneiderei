@@ -1,43 +1,149 @@
 <div class="container">
     <div class="card w-100 mt-4">
-        <h4 class="card-header">
-            Prisliste anzeigen
-        </h4>
-        <div>
-            <div class="row">
-                <div class="col-2">
-                    Name
-                </div> 
-                <div class="col-10">
-                    <%= Pricelist.name %>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2">
-                    Preis
-                </div> 
-                <div class="col-10">
-                    <%= Pricelist.price %>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2">
-                    Beschreibung
-                </div> 
-                <div class="col-10">
-                    <%= Pricelist.description %>
-                </div>
-            </div>
-            <% if(Pricelist.category) { %>
-                <div class="row">
-                    <div class="col-2">
-                        Kategorie
-                    </div> 
-                    <div class="col-10">
-                        <%= Pricelist.category.name %>
-                    </div>
-                </div>
-                <% } %>
+      <h1 class="card-header">
+        Prisliste anzeigen
+      </h1>
+      <div>
+        <div class="row">
+          <div class="col-2">
+            Name
+          </div> 
+          <div class="col-10">
+            <%= Pricelist.name %>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-2">
+            Preis
+          </div> 
+          <div class="col-10">
+            <%= Pricelist.price %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            Beschreibung
+          </div> 
+          <div class="col-10">
+            <%= Pricelist.description %>
+          </div>
+        </div>
+        <% if(Pricelist.category) { %>
+        <div class="row">
+          <div class="col-2">
+            Kategorie
+          </div> 
+          <div class="col-10">
+            <%= Pricelist.category.name %>
+          </div>
+        </div>
+        <% } %>
+        <div class="row">
+          <div class="col-12">
+            <h1>Schneiderarbeiten</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Aufgabe</th>
+                    <th>KÜRZER</th>
+                    <th>LÄNGER</th>
+                    <th>ENGER</th>
+                    <th>WEITER</th>
+                    <th>FLICKEN</th>
+                    <th>REISSVERSCHLUSS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>HOSE</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                  </tr>
+                  <tr>
+                    <td>HEMD</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>–</td>
+                    <td>–</td>
+                  </tr>
+                  <tr>
+                    <td>SAKKO</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>–</td>
+                    <td>–</td>
+                  </tr>
+                  <tr>
+                    <td>JACKE</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                  </tr>
+                  <tr>
+                    <td>JEANS</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                  </tr>
+                  <tr>
+                    <td>BLUSE</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>–</td>
+                    <td>–</td>
+                  </tr>
+                  <tr>
+                    <td>KLEID</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>–</td>
+                    <td>+</td>
+                  </tr>
+                  <tr>
+                    <td>LEDERHOSE</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                  </tr>
+                  <tr>
+                    <td>DIRNDL</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                    <td>+</td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  
