@@ -490,3 +490,46 @@ form {
 .stars span.star-filled {
   color: gold;
 }
+
+  /* Stile für die Preisliste */
+
+  .preisdiv{
+    width: auto;
+    margin: 1rem 1rem 1rem 1rem;
+  }
+  #priceList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .priceItem {
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+  }
+
+  .priceContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .priceContent h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #c18c02;
+    letter-spacing: 1px;
+  }
+
+  .price {
+    font-weight: light;
+    color: #555;
+  }
+
+  .description {
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 5px;
+  }
+

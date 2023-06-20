@@ -65,8 +65,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /admin': { view: 'pages/admin' },
-  'GET /bewertung': { view: 'pages/bewertung' },
-  'POST /bewertung': { controller: 'BewertungController', action: 'create' },
+  'GET /bewertungen':{view: 'pages/bewertungen'},
+  'GET /bewertungen': { controller: 'BewertungController', action: 'index' },
+  'POST /bewertung/create': { controller: 'BewertungController', action: 'create' },
+
   'GET /pricelist': { controller: 'PricelistController', action: 'index' },
 
   'GET /faq': { view: 'pages/faq' },
@@ -84,8 +86,7 @@ module.exports.routes = {
   'GET /pricelist/:id/destroy': { controller: 'PricelistController', action: 'destroyOne' },
   'POST /pricelist/create': { controller: 'PricelistController', action: 'create' },
   'GET /pricelist/:id': { controller: 'PricelistController', action: 'findOne' },
-  'GET /pricelist': { view:'pages/pricelist/show' },
-  'GET/pricelist/show': 'PricelistController.find',
+  'GET /preise':'PricelistController.show', 
 
 
   'POST /duy': { controller: 'DuyController', action: 'create' },

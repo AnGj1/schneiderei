@@ -1,0 +1,57 @@
+<h1>Preisliste</h1>
+<div class="preisdiv">
+<input type="text" id="searchInput" placeholder="Suche nach Stichwort">
+<select id="filterSelect">
+  <option value="all">Alle</option>
+  <option value="name">Name</option>
+  <option value="description">Beschreibung</option>
+</select>
+
+
+<ul id="priceList">
+  <% prices.forEach(function(pricelist) { %>
+    <li class="priceItem">
+      <div class="priceContent">
+        <h4><%= pricelist.name %></h3>
+        <p class="price">Preis: <%= pricelist.price %> €</p>
+        <p class="description">Beschreibung: <%= pricelist.description %></p>
+      </div>
+    </li>
+  <% }); %>
+</ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    const searchInput = document.getElementById('searchInput');
+    const filterSelect = document.getElementById('filterSelect');
+    const cards = Array.from(document.getElementsByClassName('card'));
+
+    searchInput.addEventListener('keyup', filterPrices);
+    filterSelect.addEventListener('change', filterPrices);
+
+    function filterPrices() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const filter = filterSelect.value;
+
+      cards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p:nth-of-type(2)').textContent.toLowerCase();
+       
+
+        let displayCard = true;
+
+        if (filter === 'name') {
+          displayCard = name.includes(searchTerm);
+        } else if (filter === 'description') {
+          displayCard = description.includes(searchTerm);
+        } else if (filter === 'all') {
+          displayCard = name.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm);
+        }
+
+        card.style.display = displayCard ? 'block' : 'none';
+      });
+    }
+  });
+</script>

@@ -1,0 +1,13 @@
+<tbody>
+<h2>Bewertungen:</h2>
+  <ul>
+    <% bewertungen.forEach(function(bewertung) { %>
+      <li>
+        <p>{{ bewertung.name }}</p>
+        <p>{{ bewertung.comment }}</p>
+        <p>{{ bewertung.rating }}/5 Sterne</p>
+      </li>
+    <% }); %>
+  </ul>
+</div>
+</tbody>
