@@ -1,83 +1,72 @@
-<div id="login">
-  <div class="container-fluid pt-5 pb-5">
-    <h1 class="text-center">Sign in to your account</h1>
-    <div style="max-width: 450px;" class="mx-auto">
-      <hr/>
-      <form id="login-form" action="login" method="POST">
+<div id="app">
+  <div id="login">
+    <div class="container-fluid pt-5 pb-5">
+      <h1 class="text-center">Sign in to your account</h1>
+      <div style="max-width: 450px;" class="mx-auto">
+        <hr/>
         <div class="form-group">
-          <input type="email" name="emailAddress" class="form-control" placeholder="Email address" autocomplete="email" focus-first>
+          <input type="email" id="emailAddress" v-model="emailAddress" class="form-control" placeholder="Email address" autocomplete="email">
           <div class="invalid-feedback">Please provide a valid email address.</div>
         </div>
         <div class="form-group">
-          <input name="password" type="password" class="form-control" placeholder="Password" autocomplete="current-password">
+          <input type="password" id="password" v-model="password" class="form-control" placeholder="Password" autocomplete="current-password">
           <div class="invalid-feedback">Please enter your password.</div>
         </div>
         <div class="form-group form-check">
-          <input class="form-check-input" type="checkbox" id="remember" name="rememberMe"/>
+          <input class="form-check-input" type="checkbox" id="remember" v-model="rememberMe"/>
           <label class="form-check-label" for="remember">Remember me</label>
         </div>
-        <span id="error-message" style="display: none; color: red;">The credentials you entered are not associated with an account. Please check your email and/or password and try again.</span>
+        <span v-show="errorMessage" style="color: red;">{{errorMessage}}</span>
         <div class="form-group">
-          <button type="submit" class="btn-dark btn-lg btn-block">Sign in</button>
+          <button type="button" class="btn-dark btn-lg btn-block" @click="login">Sign in</button>
         </div>
-      </form>
-      <p class="text-center"><a href="/password/forgot">Forgot your password?</a></p>
-      <p class="text-center"><a href="/signup">You do not have an account?</a></p>
+        <p class="text-center"><a href="/password/forgot">Forgot your password?</a></p>
+        <p class="text-center"><a href="/signup">You do not have an account?</a></p>
+      </div>
     </div>
   </div>
 </div>
 
-
-<!--<script>
-  // JavaScript-Code für die Validierung des Login-Formulars
-  document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Verhindert das Standard-Formularsubmit
-
-    var emailInput = document.getElementsByName('emailAddress')[0];
-    var passwordInput = document.getElementsByName('password')[0];
-    var errorMessage = document.getElementById('error-message');
-
-    // Überprüfen der Eingabefelder
-    if (!emailInput.value) {
-      emailInput.classList.add('is-invalid');
-      errorMessage.style.display = 'block';
-      errorMessage.textContent = 'Please provide a valid email address.';
-      return;
-    }
-
-    if (!passwordInput.value) {
-      passwordInput.classList.add('is-invalid');
-      errorMessage.style.display = 'block';
-      errorMessage.textContent = 'Please enter your password.';
-      return;
-    }
-
-    // Weiterleitung zur Serverseite zum Überprüfen der Anmeldedaten
-    // Hier können Sie AJAX verwenden oder das Formular direkt an den Server senden
-
-    // Beispiel für den AJAX-Aufruf mit Fetch-API
-    fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: emailInput.value,
-        password: passwordInput.value
-      })
-    })
-    .then(function(response) {
-      if (response.ok) {
-        // Erfolgreiche Anmeldung, Weiterleitung zur nächsten Seite
-        window.location.href = '/dashboard';
-      } else {
-        // Fehlerhafte Anmeldedaten
-        errorMessage.style.display = 'block';
-        errorMessage.textContent = 'The credentials you entered are not associated with an account. Please check your email and/or password and try again.';
+<script>
+  const { createApp } = Vue
+  createApp({
+    data() {
+      return {
+        emailAddress: "",
+        password: "",
+        rememberMe: false,
+        errorMessage: ""
       }
-    })
-    .catch(function(error) {
-      console.error('An error occurred:', error);
-    });
-  });
-</script>-->
+    },
+    methods: {
+      login: function() {
+        console.log("Logging in...");
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!this.emailAddress.match(emailPattern)) {
+          this.errorMessage = "Please provide a valid email address.";
+          return;
+        }
+
+        if (!this.password) {
+          this.errorMessage = "Please enter your password.";
+          return;
+        }
+
+        let url = new URL(`${window.location.origin}/login`);
+        let data = new FormData();
+        data.append("emailAddress", this.emailAddress);
+        data.append("password", this.password);
+        data.append("rememberMe", this.rememberMe);
+        fetch(url, { method: "POST", body: data }).then((result) => {
+          if (result.ok) {
+            window.location.href = '/dashboard';
+          } else {
+            this.errorMessage = "The credentials you entered are not associated with an account. Please check your email and/or password and try again.";
+          }
+        });
+      }
+    }
+  }).mount("#app");
+</script>
+
