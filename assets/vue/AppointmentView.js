@@ -1,5 +1,4 @@
 export default {
-  props: ['date'],
   data() {
     return {
       name: '',
@@ -9,99 +8,125 @@ export default {
       appointments: [],
     };
   },
-
+  mounted() {
+    this.fetchAppointments();
+  },
   methods: {
-    createAppointment: function () {
-      let url = new URL(origin + "api/create");
+    createAppointment: function() {
       const formData = new FormData();
       formData.append("name", this.name);
       formData.append("date", this.date);
       formData.append("time", this.time);
-    
-      fetch(url, {
+      formData.append("description", this.description);
+  
+      fetch("/appointment/create", {
         method: "POST",
-        body: formData,
+        body: formData
       })
-        .then((result) => {
-          let url = new URL(origin + 'api/find')
-          fetch(url)
-          .then(res => res.json())
-          .then(data => this.AppointmentsView = data)
-          .then(this.alterVisible = true);
-      });
+        .then(response => {
+          if (response.ok) {
+            // Termin erfolgreich erstellt
+            console.log("Termin wurde erfolgreich erstellt");
+            // Hier kannst du weitere Aktionen ausführen, z.B. Aktualisierung der Terminliste
+          } else {
+            // Fehler beim Erstellen des Termins
+            console.error("Fehler beim Erstellen des Termins");
+          }
+        })
+        .catch(error => {
+          console.error("Fehler beim Server-Request", error);
+        });
     },
-  },
-
-    deleteAppointment: function (id) {
-      let url = `${window.location.origin}/appointment/${id}/delete`;
-
-      fetch(url, {
-          method: 'DELETE',
+  
+    deleteAppointment(id) {
+      fetch(`/appointment/${id}/delete`, {
+        method: 'DELETE',
       })
-          .then((result) => {
-              if (!result.ok) {
-                  throw new Error(`HTTP error! status: ${result.status}`);
-              }
-              return fetch(`${window.location.origin}/appointment/get`);
-          })
-          .then(res => res.json())
-          .then(data => this.appointments = data)
-          .catch(e => console.error('There was an error deleting the appointment:', e));
+        .then((response) => {
+          if (response.ok) {
+            this.fetchAppointments();
+          } else {
+            console.error(`Fehler beim Löschen des Termins mit der ID ${id}`);
+          }
+        })
+        .catch((error) => {
+          console.error('Fehler beim Server-Request', error);
+        });
     },
-
-  created: function () {
-    let url = new URL(`${window.location.origin}/appointment/get`);
-    fetch(url)
-      .then(res => res.json())
-      .then(data => this.appointments = data);
+    fetchAppointments() {
+      fetch('/appointment/index')
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Fehler beim Abrufen der Termine');
+          }
+        })
+        .then((data) => {
+          this.appointments = data;
+        })
+        .catch((error) => {
+          console.error('Fehler beim Server-Request', error);
+        });
+    },
+    resetForm() {
+      this.name = '';
+      this.date = '';
+      this.time = '';
+      this.description = '';
+    },
+    validateTime() {
+      const selectedTime = new Date(`2000-01-01T${this.time}`);
+      const minTime = new Date(`2000-01-01T07:00`);
+      const maxTime = new Date(`2000-01-01T18:00`);
+    
+      if (selectedTime < minTime || selectedTime > maxTime || selectedTime.getMinutes() !== 0) {
+        // Die ausgewählte Uhrzeit liegt außerhalb des gültigen Bereichs oder enthält Minuten
+        // Hier kannst du eine Fehlermeldung anzeigen oder andere Aktionen durchführen
+      }
+    }, isWithinValidTime(time) {
+      const selectedTime = new Date(`2000-01-01T${time}`);
+      const minTime = new Date(`2000-01-01T07:00`);
+      const maxTime = new Date(`2000-01-01T18:00`);
+    
+      return selectedTime >= minTime && selectedTime <= maxTime && selectedTime.getMinutes() === 0;
+    }
   },
-
   template: `
     <div class="container">
-    <h1 class="mt-4">Terminverwaltung</h1>
+      <h1 class="mt-4">Terminverwaltung</h1>
 
-    <form @submit.prevent="createAppointment" class="my-4">
-      <div>
-        <label for="action">Aktion:</label>
-        <select id="action" v-model="name">
-          <option value="">Bitte wählen</option>
-          <option value="abmessen">Abmessen (30 Minuten)</option>
-          <option value="kuerzen">Kürzen (1 Stunde)</option>
-          <option value="individual">Individual (2 Stunden)</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="date">Datum:</label>
-        <input type="date" id="date" v-model="date">
-      </div>
-
-      <div>
-        <label for="time">Uhrzeit:</label>
-        <input type="time" id="time" v-model="time">
-      </div>
-
-      <div>
-        <label for="description">Beschreibung:</label>
-        <input type="text" id="description" v-model="description">
-      </div>
-
-      <button type="submit" class="btn btn-primary">Termin speichern</button>
-    </form>
-
-    <h2>Freie Termine:</h2>
-    <ul class="list-group">
-      <li class="list-group-item" v-for="appointment in appointments" :key="appointment.id">
-        <div class="d-flex justify-content-between">
-          <span>Aktion: {{ appointment.name }}</span>
-          <span>Datum: {{ appointment.date }}</span>
-          <span>Uhrzeit: {{ appointment.time }}</span>
-          <span>Beschreibung: {{ appointment.description }}</span>
-          <button class="btn btn-danger" @click="deleteAppointment(appointment.id)">Termin löschen</button>
+      <form @submit.prevent="createAppointment" class="my-4">
+        <div>
+          <label for="action">Aktion:</label>
+          <select id="action" v-model="name">
+            <option value="">Bitte wählen</option>
+            <option value="abmessen">Abmessen (30 Minuten)</option>
+            <option value="kuerzen">Kürzen (1 Stunde)</option>
+            <option value="individual">Individual (2 Stunden)</option>
+          </select>
         </div>
-      </li>
-    </ul>
-  </div>
 
-    `,
-  };
+        <div>
+          <label for="date">Datum:</label>
+          <input type="date" id="date" v-model="date">
+        </div>
+
+        <div>
+          <label for="time">Uhrzeit:</label>
+          <h10>Wählen Sie eine Uhrzeit zwischen 07:00 und 18:00 Uhr</h10>
+          <input type="time" id="time" v-model="time" @input="validateTime">
+        </div>
+
+
+        <div>
+          <label for="description">Beschreibung:</label>
+          <input type="text" id="description" v-model="description">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Termin speichern</button>
+      </form>
+
+    </div>
+  `,
+};

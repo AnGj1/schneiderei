@@ -2,14 +2,18 @@
 module.exports = {
 
    
-    create: async function (req, res) {
-        sails.log.debug("Create appointment....")
-        let params = req.allParams();
-        sails.log.debug(params); // log the received params
-        await Appointment.create(params);
-        res.redirect('/confirmation');
-    },
-    
+  create: async function(req, res) {
+    try {
+      const { name, date, time, description } = req.body;
+      const newAppointment = await Appointment.create({ name, date, time, description }).fetch();
+      return res.status(201).send(newAppointment);
+    } catch (error) {
+      console.error('Fehler beim Hinzufügen des Termins', error);
+      return res.status(500).send({ error: 'Fehler beim Hinzufügen des Termins' });
+    }
+  },
+  
+  
     /*create: async function (req, res) {
       try {
         const userId = req.session.userId;
@@ -22,16 +26,17 @@ module.exports = {
     },*/
   
   
-    read: async function (req, res) {
+    index: async function (req, res) {
       try {
         const userId = req.session.userId; 
-        const appointment = await Appointment.find({ user: userId });
-        return res.json(appointment);
+        const appointments = await Appointment.find({ user: userId });
+        return res.view('pages/bewertungen/index', { appointments });
       } catch (error) {
         console.error('Error:', error);
         return res.serverError();
       }
     },
+    
    
   
     update: async function (req, res) {

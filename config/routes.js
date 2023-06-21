@@ -65,9 +65,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /admin': { view: 'pages/admin' },
-  'GET /bewertungen':{view: 'pages/bewertungen'},
-  //'GET /bewertungen': { controller: 'BewertungController', action: 'index' },
-  'POST /bewertung/create': { controller: 'BewertungController', action: 'create' },
+
+  'GET /bewertungen': { controller: 'BewertungController', action: 'index' },
+  'POST /bewertungen/create': { controller: 'BewertungController', action: 'create' },
 
   'GET /pricelist': { controller: 'PricelistController', action: 'index' },
 
@@ -114,18 +114,17 @@ module.exports.routes = {
   
  
     'GET /appointment': { view: 'pages/appointment' },
-    'POST /appointment': 'AppointmentController.create',
+    'POST /appointment/create': 'AppointmentController.create',
     'GET /appointment/get': 'AppointmentController.read',
     'DELETE /appointment/:id/delete': 'AppointmentController.delete',
-    'PUT /appointment/:id/update': 'AppointmentController.update',  
+    'PUT /appointment/:id/update': 'AppointmentController.update', 
+    'POST /appointment/create': { controller: 'AppointmentController', action: 'create' }, 
 
     'GET /api/create' : {controller: 'AppointmentController', action: 'create'},
     'POST /api/create': {controller: 'AppointmentController', action: 'create'},
 
     'GET /gallery': {view: 'pages/gallery'},
     'GET /faq' :   {view: 'pages/faq'}, 
-
-  
   };
   
   

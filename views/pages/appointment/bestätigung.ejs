@@ -1,0 +1,19 @@
+<template>
+    <div>
+      <h1>Bestätigung</h1>
+      <p>Der Termin am {{ date }} wurde erfolgreich erstellt.</p>
+    </div>
+  </template>
+  
+  <script>
+    export default {
+      data() {
+        return {
+          date: '', // Das Datum hier setzen, entweder über eine Prop oder aus dem erstellten Termin
+        };
+      },
+      created() {
+        this.date = new Date().toLocaleDateString(); // Beispiel: Aktuelles Datum verwenden
+      },
+    };
+    </script>

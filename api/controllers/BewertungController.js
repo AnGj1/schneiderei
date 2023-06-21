@@ -1,28 +1,28 @@
+// BewertungController.js
+
 module.exports = {
-  index: async function (req, res) {
+  index: async function(req, res) {
     try {
       const bewertungen = await Bewertungen.find();
-      return res.view('bewertungen', { bewertungen });
+      return res.view('pages/bewertungen/create', { bewertungen });
     } catch (error) {
       console.error(error);
       return res.serverError();
     }
   },
 
+
   create: async function (req, res) {
     try {
-      const bewertung = await Bewertungen.create({
-        name: req.body.name,
-        stars: req.body.stars,
-        comment: req.body.comment,
-      }).fetch();
+      const { name, rating, comment } = req.body;
+      const newReview = await Bewertungen.create({ name, rating, comment }).fetch();
 
-      req.addFlash('success', 'Vielen Dank für Ihre Bewertung!');
-      return res.redirect('/bewertungen');
+      // Erfolgreiche Bewertung
+      return res.status(201).send(newReview);
     } catch (error) {
       console.error(error);
-      req.addFlash('error', 'Es ist ein Fehler aufgetreten.');
-      return res.redirect('/bewertungen');
+      // Fehler beim Hinzufügen der Bewertung
+      return res.status(500).send({ error: 'Fehler beim Hinzufügen der Bewertung' });
     }
   },
 };

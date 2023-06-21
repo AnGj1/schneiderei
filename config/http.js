@@ -10,7 +10,17 @@
  */
 
 module.exports.http = {
-
+  /*middleware: {
+    
+    customMiddleware: (req, res, next) => {
+      // Überprüfe, ob der Benutzer authentifiziert ist
+      if (req.isAuthenticated()) {
+        return next(); // Der Benutzer ist authentifiziert, weiter zur nächsten Middleware
+      } else {
+        return res.redirect('/login'); // Der Benutzer ist nicht authentifiziert, Weiterleitung zur Login-Seite
+      }
+    },*/
+  
   /****************************************************************************
   *                                                                           *
   * Sails/Express middleware to run for every HTTP request.                   *
@@ -20,7 +30,7 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-  middleware: {
+ 
 
     /***************************************************************************
     *                                                                          *
@@ -29,16 +39,16 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // order: [
-    //   'cookieParser',
-    //   'session',
-    //   'bodyParser',
-    //   'compress',
-    //   'poweredBy',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    // ],
+     //order: [
+     //'cookieParser',
+       /*'session',
+       'bodyParser',
+     'compress',
+    'poweredBy',
+       'router',
+       'www',
+      'favicon',
+     ],*/
 
 
     /***************************************************************************
@@ -55,6 +65,5 @@ module.exports.http = {
     //   return middlewareFn;
     // })(),
 
-  },
 
 };
