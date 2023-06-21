@@ -73,7 +73,13 @@ by a large team, those administrative features might be split across a few diffe
 
 So, while this \`isSuperAdmin\` demarcation might not be the right approach forever, it's a good place to start.`
     },
-  },
+  
+isEmloye: {
+  type: 'boolean',
+  description: 'Whether this user is a "manager" with extra permissions, etc.',
+}
 
+
+ },
 
 };

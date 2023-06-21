@@ -1,17 +1,24 @@
-
 module.exports = {
 
+  
    
   create: async function(req, res) {
     try {
       const { name, date, time, description } = req.body;
       const newAppointment = await Appointment.create({ name, date, time, description }).fetch();
+      console.log
+      ("Test")
+      // Weiterleitung zur Bestätigungsseite
+      // return res.redirect('/bestaetigung');
+  
+      // Alternativ können Sie die Antwort mit den erstellten Termininformationen senden
       return res.status(201).send(newAppointment);
     } catch (error) {
       console.error('Fehler beim Hinzufügen des Termins', error);
       return res.status(500).send({ error: 'Fehler beim Hinzufügen des Termins' });
     }
   },
+  
   
   
     /*create: async function (req, res) {
@@ -29,8 +36,8 @@ module.exports = {
     index: async function (req, res) {
       try {
         const userId = req.session.userId; 
-        const appointments = await Appointment.find({ user: userId });
-        return res.view('pages/bewertungen/index', { appointments });
+        const appointment = await Appointment.find({ user: userId });
+        return res.view('pages/termin', { appointment });
       } catch (error) {
         console.error('Error:', error);
         return res.serverError();
@@ -65,4 +72,3 @@ module.exports = {
   
   
   };
-  

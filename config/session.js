@@ -17,10 +17,15 @@ module.exports.session = {
   * Replace at your own risk in production-- you will invalidate the cookies *
   * of your users, forcing them to log in again.                             *
   *                                                                          *
+  * 
+  * 
   ***************************************************************************/
-  secret: '74a87887cf2319afc1c1e1d964cda210',
-
-
+    //adapter: 'sails-session-file',
+    secret: '74a87887cf2319afc1c1e1d964cda210',
+    //cookie: {
+     // maxAge: 24 * 60 * 60 * 1000, // Gültigkeitsdauer des Cookies in Millisekunden (hier 24 Stunden)
+      //secure: false,
+    
   /***************************************************************************
   *                                                                          *
   * Customize when built-in session support will be skipped.                 *

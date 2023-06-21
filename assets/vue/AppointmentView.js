@@ -1,10 +1,12 @@
 export default {
+  props: ['date'],
   data() {
     return {
       name: '',
       date: '',
       time: '',
       description: '',
+
       appointments: [],
     };
   },
@@ -12,13 +14,14 @@ export default {
     this.fetchAppointments();
   },
   methods: {
+
     createAppointment: function() {
       const formData = new FormData();
       formData.append("name", this.name);
       formData.append("date", this.date);
       formData.append("time", this.time);
       formData.append("description", this.description);
-  
+    
       fetch("/appointment/create", {
         method: "POST",
         body: formData
@@ -26,7 +29,9 @@ export default {
         .then(response => {
           if (response.ok) {
             // Termin erfolgreich erstellt
-            console.log("Termin wurde erfolgreich erstellt");
+            const createdDateTime = `${this.date} ${this.time}`;
+            alert(`Ihr Termin wurde am ${createdDateTime} erstellt`);
+            window.location.href= "/bestaetigung"
             // Hier kannst du weitere Aktionen ausführen, z.B. Aktualisierung der Terminliste
           } else {
             // Fehler beim Erstellen des Termins
@@ -37,6 +42,8 @@ export default {
           console.error("Fehler beim Server-Request", error);
         });
     },
+    
+  },
   
     deleteAppointment(id) {
       fetch(`/appointment/${id}/delete`, {
@@ -84,18 +91,11 @@ export default {
         // Die ausgewählte Uhrzeit liegt außerhalb des gültigen Bereichs oder enthält Minuten
         // Hier kannst du eine Fehlermeldung anzeigen oder andere Aktionen durchführen
       }
-    }, isWithinValidTime(time) {
-      const selectedTime = new Date(`2000-01-01T${time}`);
-      const minTime = new Date(`2000-01-01T07:00`);
-      const maxTime = new Date(`2000-01-01T18:00`);
-    
-      return selectedTime >= minTime && selectedTime <= maxTime && selectedTime.getMinutes() === 0;
-    }
-  },
+    }, 
+
   template: `
     <div class="container">
       <h1 class="mt-4">Terminverwaltung</h1>
-
       <form @submit.prevent="createAppointment" class="my-4">
         <div>
           <label for="action">Aktion:</label>
@@ -117,8 +117,6 @@ export default {
           <h10>Wählen Sie eine Uhrzeit zwischen 07:00 und 18:00 Uhr</h10>
           <input type="time" id="time" v-model="time" @input="validateTime">
         </div>
-
-
         <div>
           <label for="description">Beschreibung:</label>
           <input type="text" id="description" v-model="description">

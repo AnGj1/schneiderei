@@ -8,9 +8,7 @@ module.exports = {
     },
 
     date: {
-      type: 'string',
-      columnType: 'date',
-      required: true,
+      type: 'ref', columnType: 'datetime', required: true
     },
 
     time: {

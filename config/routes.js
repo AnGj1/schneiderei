@@ -37,7 +37,7 @@ module.exports.routes = {
   'POST  /updatePassword':               { action: 'account/update-password' },
   'POST  /signup':                       { action: 'entrance/signup' },
 
-
+//'get /updatePassword':{view: 'account/update-password'},
 
 
   /***************************************************************************
@@ -115,16 +115,31 @@ module.exports.routes = {
  
     'GET /appointment': { view: 'pages/appointment' },
     'POST /appointment/create': 'AppointmentController.create',
-    'GET /appointment/get': 'AppointmentController.read',
+    'GET /termin': 'AppointmentController.index',
     'DELETE /appointment/:id/delete': 'AppointmentController.delete',
     'PUT /appointment/:id/update': 'AppointmentController.update', 
     'POST /appointment/create': { controller: 'AppointmentController', action: 'create' }, 
+
 
     'GET /api/create' : {controller: 'AppointmentController', action: 'create'},
     'POST /api/create': {controller: 'AppointmentController', action: 'create'},
 
     'GET /gallery': {view: 'pages/gallery'},
     'GET /faq' :   {view: 'pages/faq'}, 
+    '/bestaetigung': { view: 'pages/bestaetigung' },
+
+
+
+    //'GET /login': { controller: 'AuthController', action: 'showLogin' },
+
+    // Anmeldung durchführen
+    //'POST /login': { controller: 'AuthController', action: 'login' },
+  
+    // Ausloggen
+    //'GET /logout': { controller: 'AuthController', action: 'logout' },
+  
+    // Geschützte Seite anzeigen
+    //'GET /dashboard': { controller: 'DashboardController', action: 'showDashboard' }
   };
   
   
