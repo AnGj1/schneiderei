@@ -20,7 +20,6 @@
         <div class="form-group">
           <button type="button" class="btn-dark btn-lg btn-block" @click="login">Sign in</button>
         </div>
-        <p class="text-center"><a href="/password/forgot">Forgot your password?</a></p>
         <p class="text-center"><a href="/signup">You do not have an account?</a></p>
       </div>
     </div>
@@ -60,7 +59,7 @@
         data.append("rememberMe", this.rememberMe);
         fetch(url, { method: "POST", body: data }).then((result) => {
           if (result.ok) {
-            window.location.href = '/dashboard';
+            window.location.href = '/welcome';
           } else {
             this.errorMessage = "The credentials you entered are not associated with an account. Please check your email and/or password and try again.";
           }
