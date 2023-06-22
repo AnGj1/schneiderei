@@ -48,7 +48,9 @@ module.exports.policies = {
     'updateOne':'is-super-admin',
     'show':true
 
-  }
+  },
 
-  
+  AppointmentControlelr:{
+    '*': true
+  }
 };
