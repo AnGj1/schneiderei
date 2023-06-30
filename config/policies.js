@@ -32,7 +32,6 @@ module.exports.policies = {
 
   DuyController: {
     '*': 'is-super-admin',
-    //'*': 'is-employee'
   },
   CategoryController: {
     '*': 'is-super-admin',
@@ -40,7 +39,6 @@ module.exports.policies = {
   }, 
   PricelistController:{
     'create':'is-super-admin',
-    //'*': 'is-employee',
     'new': 'is-super-admin', 
     'find': true,
     'findOne': 'is-super-admin' ,

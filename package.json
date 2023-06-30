@@ -9,6 +9,7 @@
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
     "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "ejs-lint": "^2.0.0",
     "express-session": "^1.17.3",
     "google-maps": "^4.3.3",

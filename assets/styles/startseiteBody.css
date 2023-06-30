@@ -350,11 +350,11 @@ form {
 }
 
 #app input[type="text"]{
-  color: #ced4da;
+  color: #363636;
   border-color: #333;
 }
 #app input[type="email"]{
-  color: #ced4da;
+  color: #363636;
   border-color: #333;
 }
 #app textarea {
