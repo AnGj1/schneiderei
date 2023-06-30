@@ -69,8 +69,6 @@ module.exports.routes = {
 
   'GET /bewertungen': { view: 'pages/bewertungen/create' },
   'POST /bewertungen/create': { controller: 'BewertungController', action: 'create' },
-  'GET /showBewertung':{view: 'pages/showBewertung'},
-  'GET /showBewertung': { controller: 'BewertungController', action: 'find' },
   'GET /bewertungen/show': { controller: 'BewertungController', action: 'find' },
   'POST /bewertungen/:id/addReply': 'BewertungController.addReply',
 

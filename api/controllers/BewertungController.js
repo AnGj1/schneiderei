@@ -4,7 +4,9 @@ module.exports = {
   find: async function(req, res) {
     try {
       const bewertungen = await Bewertungen.find();
+      console.log("bewertungen angezeigt")
       return res.view('pages/bewertungen/show', { bewertungen: bewertungen });
+      
     } catch (error) {
       console.error(error);
       return res.serverError();
@@ -33,21 +35,24 @@ module.exports = {
     }
   },
   addReply: async function(req, res) {
-  try {
-    const { id } = req.params;
-    const { replies } = req.body;
-    const review = await Bewertungen.findOne({ id });
-    if (!review) {
-      return res.status(404).send({ error: 'Bewertung nicht gefunden' });
+    try {
+      const { id } = req.params;
+      const { replies } = req.body;
+      const review = await Bewertungen.findOne({ id });
+      if (!review) {
+        return res.status(404).send({ error: 'Bewertung nicht gefunden' });
+      }
+      review.replies.push(replies);
+      await Bewertungen.update({ id: review.id }, { replies: review.replies });
+      return res.status(200).send(review);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send({ error: 'Fehler beim Hinzufügen der Antwort' });
     }
-    review.replies.push(replies);
-    await Bewertungen.update({ id: review.id }, { replies: review.replies });
-    return res.status(200).send(review);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send({ error: 'Fehler beim Hinzufügen der Antwort' });
-  }
-},
+  },
+  
+  
+
 
 
 
