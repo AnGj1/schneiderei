@@ -189,10 +189,12 @@ display: block;
 width: 100%;
 padding: 10px;
 border-radius: 5px;
-border: none;
+border:#ccc 2px;
+color: #313131;
 margin-bottom: 20px;
 font-size: 16px;
 box-sizing: border-box;
+border-style: solid;
 }  
 
 /* Senden-Button-Layout */
@@ -347,8 +349,14 @@ form {
   font-size: 14px;
 }
 
-#app input[type="text"],
-#app input[type="email"],
+#app input[type="text"]{
+  color: #ced4da;
+  border-color: #333;
+}
+#app input[type="email"]{
+  color: #ced4da;
+  border-color: #333;
+}
 #app textarea {
   border: 1px solid #ced4da;
   border-radius: 3px;
@@ -663,4 +671,36 @@ textarea {
 
 .reply {
   margin-bottom: 10px;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.appointments-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.appointments-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.appointments-table tbody tr:hover {
+  background-color: #eaeaea;
+}
+
+.card {
+  margin-bottom: 10px; 
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem ;
 }

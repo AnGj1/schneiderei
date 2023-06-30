@@ -1,29 +1,55 @@
 <div class="container">
-    <form action="/pricelist" method="post">
-        <div>
-            <div class="form-group">
-                <label class="col-form-label-lg">Name</label>
-                <input type="text" class="form-control" maxlength="80" name="name">
-            </div>
-            <div class="form-group">
-                <label class="col-form-label-lg">Preis</label>
-                <input type="text" class="form-control" maxlength="8" name="price">
-            </div>
-            <div class="form-group">
-                <label class="col-form-label-lg">Beschreibung</label>
-                <input type="text" maxlength="255" class="form-control" size="40" name="description">
-            </div>
-        </div>
-
+    <form action="/pricelist" method="post" onsubmit="return validateForm()">
+      <div>
         <div class="form-group">
-            <label class="col-form-label-lg">Kategorie</label>
-             <select class="form-control" name="category" >
-            <% categories.forEach(function(category){ %>
-                <option value="<%= category.id %>"><%= category.name %></option>
-            <% }); %>
-            </select>
+          <label class="col-form-label-lg">Name</label>
+          <input type="text" class="form-control" maxlength="80" name="name" id="nameInput">
         </div>
-
-        <button type="submit" class="btn btn-primary">Hinzufügen</button>
+        <div class="form-group">
+          <label class="col-form-label-lg">Preis</label>
+          <input type="text" class="form-control" maxlength="8" name="price" id="priceInput">
+        </div>
+        <div class="form-group">
+          <label class="col-form-label-lg">Beschreibung</label>
+          <input type="text" maxlength="255" class="form-control" size="40" name="description" id="descriptionInput">
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label class="col-form-label-lg">Kategorie</label>
+        <select class="form-control" name="category">
+          <% categories.forEach(function(category){ %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+          <% }); %>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Hinzufügen</button>
     </form>
-</div>
+  </div>
+  
+  <script>
+    function validateForm() {
+      const nameInput = document.getElementById('nameInput');
+      const priceInput = document.getElementById('priceInput');
+      const descriptionInput = document.getElementById('descriptionInput');
+  
+      if (nameInput.value.trim() === '') {
+        alert('Bitte geben Sie einen Namen ein.');
+        return false; // Verhindert das Absenden des Formulars
+      }
+  
+      if (priceInput.value.trim() === '') {
+        alert('Bitte geben Sie einen Preis ein.');
+        return false; // Verhindert das Absenden des Formulars
+      }
+  
+      if (descriptionInput.value.trim() === '') {
+        alert('Bitte geben Sie eine Beschreibung ein.');
+        return false; // Verhindert das Absenden des Formulars
+      }
+  
+      return true; // Erlaubt das Absenden des Formulars
+    }
+  </script>
+  

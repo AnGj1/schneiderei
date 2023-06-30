@@ -119,10 +119,15 @@ module.exports.routes = {
  
     'GET /appointment': { view: 'pages/appointment' },
     'POST /appointment/create': 'AppointmentController.create',
-    'GET /termin': 'AppointmentController.index',
-    'DELETE /appointment/:id/delete': 'AppointmentController.delete',
-    'PUT /appointment/:id/update': 'AppointmentController.update', 
     'POST /appointment/create': { controller: 'AppointmentController', action: 'create' }, 
+    'GET /appointment/show': 'AppointmentController.showAll',
+
+    'GET /appointment/edit': 'AppointmentController.edit',
+    'GET /appointment/:id/edit': 'AppointmentController.editOne',
+    'POST /appointment/:id/update': 'AppointmentController.update',
+    'GET /appointment/delete': 'AppointmentController.showDeleteConfirmation',
+    'POST /appointment/:id/delete': 'AppointmentController.delete',
+    'GET /appointment/meinAppointment': 'meinTerminController.show',
 
 
     'GET /api/create' : {controller: 'AppointmentController', action: 'create'},
@@ -134,16 +139,7 @@ module.exports.routes = {
 
 
 
-    //'GET /login': { controller: 'AuthController', action: 'showLogin' },
 
-    // Anmeldung durchführen
-    //'POST /login': { controller: 'AuthController', action: 'login' },
-  
-    // Ausloggen
-    //'GET /logout': { controller: 'AuthController', action: 'logout' },
-  
-    // Geschützte Seite anzeigen
-    //'GET /dashboard': { controller: 'DashboardController', action: 'showDashboard' }
   };
   
   

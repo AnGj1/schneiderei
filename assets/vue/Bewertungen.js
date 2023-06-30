@@ -30,6 +30,27 @@ export default {
         }
       },
       submitReview() {
+          // Überprüfen, ob der Name eingegeben wurde
+          if (!this.name) {
+            alert('Bitte geben Sie Ihren Namen ein.');
+            return;
+          }
+        
+          // Überprüfen, ob die Sterne bewertet wurden
+          if (this.stars === 0) {
+            alert('Bitte bewerten Sie mit Sternen.');
+            return;
+          }
+        
+          // Überprüfen, ob das Kommentarfeld nicht leer ist und die maximale Länge von 255 Zeichen nicht überschreitet
+          if (!this.comment) {
+            alert('Bitte geben Sie einen Kommentar ein.');
+            return;
+          }
+          if (this.comment.length > 255) {
+            alert('Der Kommentar darf maximal 255 Zeichen enthalten.');
+            return;
+          }
         const newReview = {
           name: this.name,
           stars: this.stars,

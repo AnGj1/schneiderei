@@ -1,43 +1,41 @@
-<h1>Preisliste</h1>
-<div class="preisdiv">
-<input type="text" id="searchInput" placeholder="Suche nach Stichwort">
-<select id="filterSelect">
-  <option value="all">Alle</option>
-  <option value="name">Name</option>
-  <option value="description">Beschreibung</option>
-</select>
+<div class="container">
+  <h1>Preisliste</h1>
 
+  <div class="preisdiv">
+    <input type="text" id="searchInput" placeholder="Suche nach Stichwort">
+    <select id="filterSelect">
+      <option value="all">Alle</option>
+      <option value="name">Name</option>
+      <option value="description">Beschreibung</option>
+    </select>
 
-<ul id="priceList">
-  <% prices.forEach(function(pricelist) { %>
-    <li class="priceItem">
-      <div class="priceContent">
-        <h4><%= pricelist.name %></h3>
-        <p class="price">Preis: <%= pricelist.price %> €</p>
-        <p class="description">Beschreibung: <%= pricelist.description %></p>
-      </div>
-    </li>
-  <% }); %>
-</ul>
-</div>
-
-<div class="row">
-  <div class="col-12">
-    <h1>Schneiderarbeiten</h1>
+    <ul id="priceList">
+      <% prices.forEach(function(pricelist) { %>
+        <li class="card">
+          <div class="priceContent">
+            <h4><%= pricelist.name %></h4>
+            <p class="price">Preis: <%= pricelist.price %> €</p>
+            <p class="description">Beschreibung: <%= pricelist.description %></p>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <table class="table">
+
+  <div class="row">
+    <div class="col-12">
+      <h1>Schneiderarbeiten</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
         <thead>
           <tr>
             <th>Aufgabe</th>
             <th>KÜRZER</th>
-            <th>LÄNGER</th>
             <th>ENGER</th>
             <th>WEITER</th>
-            <th>FLICKEN</th>
-            <th>REISSVERSCHLUSS</th>
           </tr>
         </thead>
         <tbody>
@@ -46,17 +44,12 @@
             <td>+</td>
             <td>+</td>
             <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
+
           </tr>
           <tr>
             <td>HEMD</td>
             <td>+</td>
             <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>–</td>
             <td>–</td>
           </tr>
           <tr>
@@ -64,15 +57,9 @@
             <td>+</td>
             <td>+</td>
             <td>+</td>
-            <td>+</td>
-            <td>–</td>
-            <td>–</td>
           </tr>
           <tr>
             <td>JACKE</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
             <td>+</td>
             <td>+</td>
             <td>+</td>
@@ -82,54 +69,24 @@
             <td>+</td>
             <td>+</td>
             <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
           </tr>
           <tr>
             <td>BLUSE</td>
             <td>+</td>
             <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>–</td>
             <td>–</td>
           </tr>
           <tr>
             <td>KLEID</td>
             <td>+</td>
             <td>+</td>
-            <td>+</td>
-            <td>+</td>
             <td>–</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>LEDERHOSE</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>DIRNDL</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
-            <td>+</td>
           </tr>
         </tbody>
-    </table>
+      </table>
+    </div>
   </div>
 </div>
-</div>
-</div>
-</div>
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -146,9 +103,9 @@
       const filter = filterSelect.value;
 
       cards.forEach(card => {
-        const name = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('p:nth-of-type(2)').textContent.toLowerCase();
-       
+        const name = card.querySelector('h4').textContent.toLowerCase();
+        const description = card.querySelector('.description').textContent.toLowerCase();
+        // const category = card.querySelector('.category').textContent.toLowerCase(); // Stellen Sie sicher, dass die Variable "category" definiert ist
 
         let displayCard = true;
 
@@ -157,7 +114,7 @@
         } else if (filter === 'description') {
           displayCard = description.includes(searchTerm);
         } else if (filter === 'all') {
-          displayCard = name.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm);
+          displayCard = name.includes(searchTerm) || description.includes(searchTerm);
         }
 
         card.style.display = displayCard ? 'block' : 'none';

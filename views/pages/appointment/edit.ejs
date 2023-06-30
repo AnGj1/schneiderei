@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Alle Termine</h1>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Datum</th>
+          <th>Uhrzeit</th>
+          <th>Beschreibung</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% appointments.forEach(function(appointment) { %>
+          <tr>
+            <td><%= appointment.name %></td>
+            <td><%= appointment.date %></td>
+            <td><%= appointment.time %></td>
+            <td><%= appointment.description %></td>
+            <td>
+              <a href="/appointment/<%= appointment.id %>/edit" class="btn btn-primary">Ändern</a>
+              <form action="/appointment/<%= appointment.id %>/delete" method="POST" onsubmit="return confirm('Möchten Sie den Termin wirklich löschen?')" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Löschen</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  

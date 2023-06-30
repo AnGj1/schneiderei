@@ -19,20 +19,7 @@ module.exports = {
     }
   },
   
-  
-  
-    /*create: async function (req, res) {
-      try {
-        const userId = req.session.userId;
-        const appointment = await Appointment.create({ ...req.body, user: userId }).fetch();
-        return res.json(appointment);
-      } catch (error) {
-        console.error('Error:', error);
-        return res.serverError();
-      }
-    },*/
-  
-  
+
     index: async function (req, res) {
       try {
         const userId = req.session.userId; 
@@ -44,31 +31,103 @@ module.exports = {
       }
     },
     
-   
   
+
+    showAll: async function (req, res) {
+      try {
+    
+        const appointments = await Appointment.find();
+  
+        return res.view('pages/appointment/show', { appointments });
+      } catch (error) {
+        console.error(error);
+        return res.status(500).send({ error: 'Fehler beim Abrufen der Termine' });
+      }
+    },
+
+    edit: async function (req, res) {
+      try {
+        const appointments = await Appointment.find();
+        return res.view('pages/appointment/edit', { appointments });
+        
+      } catch (error) {
+        console.error(error);
+        return res.status(500).send({ error: 'Fehler beim Bearbeiten des Termins' });
+      }
+    },
+
+    editOne: async function (req, res) {
+      try {
+      
+        const { id } = req.params;
+    
+        // Suchen Sie den Termin in der Datenbank
+        const appointment = await Appointment.findOne({ id });
+    
+        if (!appointment) {
+          return res.status(404).send({ error: 'Termin nicht gefunden' });
+        }
+    
+        return res.view('pages/appointment/update', { appointment });
+      } catch (error) {
+        console.error(error);
+        return res.status(500).send({ error: 'Fehler beim Bearbeiten des Termins' });
+      }
+    },
+
     update: async function (req, res) {
       try {
-        const updatedStatus = req.body.status === 'true'; // Convert string to boolean
-        const appointment = await Appointment.updateOne(req.params.id).set({ status: updatedStatus });
-        
-        console.log('Updated appointment:', appointment);  // log the updated todo
-        
-        return res.json(appointment);
+        const { id } = req.params;
+        const { date, time } = req.body;
+    
+        // Aktualisieren Sie den Termin in der Datenbank
+        await Appointment.update({ id }).set({ date, time });
+    
+        return res.redirect('/appointment/show');
       } catch (error) {
-        console.error('Error:', error);
-        return res.serverError();
+        console.error(error);
+        return res.status(500).send({ error: 'Fehler beim Aktualisieren des Termins' });
       }
-  },
-  
+    },
+
+    showDeleteConfirmation: async function (req, res) {
+      try {
+        const { id } = req.params;
+    
+        // Suchen Sie den Termin in der Datenbank
+        const appointment = await Appointment.findOne({ id });
+    
+        if (!appointment) {
+          return res.status(404).send({ error: 'Termin nicht gefunden' });
+        }
+    
+        return res.view('pages/appointment/delete', { appointment });
+      } catch (error) {
+        console.error(error);
+        return res.status(500).send({ error: 'Fehler beim Anzeigen der Löschbestätigung' });
+      }
+    },
+    
     delete: async function (req, res) {
       try {
-        await Appointment.destroyOne(req.params.id);
-        return res.ok();
+        const { id } = req.params;
+    
+        // Suchen Sie den Termin in der Datenbank
+        const appointment = await Appointment.findOne({ id });
+    
+        if (!appointment) {
+          return res.status(404).send({ error: 'Termin nicht gefunden' });
+        }
+    
+        // Löschen Sie den Termin aus der Datenbank
+        await Appointment.destroy({ id });
+    
+        return res.redirect('/appointment/show');
       } catch (error) {
-        console.error('Error:', error);
-        return res.serverError();
+        console.error(error);
+        return res.status(500).send({ error: 'Fehler beim Löschen des Termins' });
       }
-    }
-  
-  
+    },
+
+    
   };

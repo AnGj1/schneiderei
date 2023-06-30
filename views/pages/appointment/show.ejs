@@ -1,0 +1,31 @@
+<!-- appointments.ejs -->
+
+<div>
+    <h1>Alle Termine</h1>
+  
+    <div class="container">
+      <table class="appointments-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Datum</th>
+            <th>Uhrzeit</th>
+            <th>Beschreibung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% appointments.sort(function(a, b) { 
+            return new Date(a.date) - new Date(b.date); 
+          }).forEach(function(appointment) { %>
+            <tr>
+              <td><%= appointment.name %></td>
+              <td><%= appointment.date %></td>
+              <td><%= appointment.time %></td>
+              <td><%= appointment.description %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

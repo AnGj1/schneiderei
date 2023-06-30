@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Termin löschen</h1>
+  
+    <p>Sind Sie sicher, dass Sie den Termin löschen möchten?</p>
+  
+    <form action="/appointment/<%= appointment.id %>/delete" method="POST">
+      <button type="submit" class="btn btn-danger">Ja, Termin löschen</button>
+      <a href="/appointment/show" class="btn btn-secondary">Nein, zurück zur Terminliste</a>
+    </form>
+  </div>
+  
