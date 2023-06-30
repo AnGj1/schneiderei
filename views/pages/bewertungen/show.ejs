@@ -1,0 +1,33 @@
+<div>
+  <h1>Kundenbewertung anzeigen</h1>
+
+  <div class="container">
+    <div id="list" class="reviews-container">
+      <% bewertungen.forEach(function(bewertung) { %>
+        <div class="review">
+          <div class="review-header">
+            <p id="name"><%= bewertung.name %></p>
+            <p id="sterne" class="text-right">5/<%= bewertung.stars %></p>
+          </div>
+          <p><%= bewertung.comment %></p>
+          
+      
+          <% bewertung.replies.forEach(function(reply) { %>
+            <div class="reply">
+              <p class="reply-author">Mitarbeiter: <%= reply %></p> 
+             
+            </div>
+          <% }); %>
+          
+          
+          <form action="/bewertungen/<%= bewertung.id %>/addReply" method="POST">
+            <% if (!bewertung.replies || bewertung.replies.length === 0) { %>
+              <input type="text" name="replies" placeholder="Antwort hinzufügen">
+              <button type="submit">Antworten</button>
+            <% } %>
+          </form>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</div>

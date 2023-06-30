@@ -1,0 +1,19 @@
+<div>
+    <h1>Kundenbewertung anzeigen</h1>
+  
+    <div class="container">
+      <div id="list" class="reviews-container">
+
+            <% bewertungen.forEach(function(bewertung) { %>
+              <div class="review">
+                <div class="review-header">
+                  <p id="name"><%= bewertung.name %></p>
+                  <p id="sterne" class="text-right"> 5/<%= bewertung.stars %></p>
+                </div>
+                <p><%= bewertung.comment %></p>
+              </div>
+            <% }); %>
+          </div>
+  
+      </div>
+    </div>

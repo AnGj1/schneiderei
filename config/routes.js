@@ -50,6 +50,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/startpage' },
+  'GET /': { controller: 'BewertungController', action: 'index' },
   'GET /prices': { controller: 'PricelistController', action: 'find'},
   
 
@@ -66,8 +67,13 @@ module.exports.routes = {
 
   'GET /admin': { view: 'pages/admin' },
 
-  'GET /bewertungen': { controller: 'BewertungController', action: 'index' },
+  'GET /bewertungen': { view: 'pages/bewertungen/create' },
   'POST /bewertungen/create': { controller: 'BewertungController', action: 'create' },
+  'GET /showBewertung':{view: 'pages/showBewertung'},
+  'GET /showBewertung': { controller: 'BewertungController', action: 'find' },
+  'GET /bewertungen/show': { controller: 'BewertungController', action: 'find' },
+  'POST /bewertungen/:id/addReply': 'BewertungController.addReply',
+
 
   'GET /pricelist': { controller: 'PricelistController', action: 'index' },
 

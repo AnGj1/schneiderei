@@ -21,7 +21,7 @@ module.exports.bootstrap = async function() {
   }
   
   await User.createEach([
-    { emailAddress: 'a.gjosheva@yahoo.de', fullName: 'Angela Gjosheva', isEmploye: true, password: await sails.helpers.passwords.hashPassword('1234') },
+    { emailAddress: 'a.gjosheva@yahoo.de', fullName: 'Angela Gjosheva', isSuperAdmin: true, password: await sails.helpers.passwords.hashPassword('1234') },
     { emailAddress: 'fk.iebn@gmail.com', fullName: 'Feride Kayapinar', isSuperAdmin: true, password: await sails.helpers.passwords.hashPassword('4321') },
     
   ])

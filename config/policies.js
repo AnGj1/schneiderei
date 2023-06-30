@@ -23,6 +23,7 @@ module.exports.policies = {
   'entrance/*': true,
   'account/logout': true,
   'PricelistController/show': true,
+  'BewertungController/create':true,
   
 
   KundendatenController: {
@@ -50,7 +51,13 @@ module.exports.policies = {
 
   },
 
-  AppointmentControlelr:{
+  AppointmentController:{
     '*': true
+  }, 
+
+  BewertungController:{
+    'index': true, 
+   'find': true
+   
   }
 };

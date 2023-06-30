@@ -1,98 +1,71 @@
 <div class="image-wrapper">
     <img src="images/webseite.jpg" width="100%" alt="Bild Start">
-</div>
-
-<div class="main-container">
+  </div>
+  
+  <div class="main-container">
     <div class="item-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>Vereinbare jetzt einen Termin</p>
-                </div>
-                <div class="col-md-6">
-                    
-                    <a href="/appointment" class="btn btn-primary">Jetzt Buchen</a>
-                    
-                </div>
-                
-            </div>
-            <div class="bilder" >
-                <img id="bildklein" src="images/kleinesBild.jpg" width="100%" alt="Bild mitte">
-            </div>
-
-            <section>
-                
-                <h2 id="mein-anker">Wer sind wir</h2>
-                <p>Wir sind stolz darauf, hochwertige maßgeschneiderte Kleidung für unsere Kunden herzustellen.
-                    Unsere Schneiderei verfügt über ein erfahrenes Team von Schneidern, die darauf spezialisiert sind, einzigartige Kleidungsstücke herzustellen, die perfekt auf die individuellen Bedürfnisse und Wünsche unserer Kunden zugeschnitten sind.
-                    Ob Sie ein maßgeschneidertes Anzug für eine Hochzeit, eine individuelle Bluse für die Arbeit oder ein exklusives Kleid für eine besondere Veranstaltung benötigen, wir stellen sicher, dass jedes Stück auf höchstem Niveau gefertigt wird.
-                    Bei uns können Sie aus einer großen Auswahl an hochwertigen Stoffen und Materialien auswählen, um sicherzustellen, dass Ihr Kleidungsstück sowohl stilvoll als auch bequem ist.
-                    Schneiderei bietet auch eine breite Palette von Anpassungsmöglichkeiten an, einschließlich personalisierter Stickereien, Knöpfe, Taschen und vieles mehr.
-                </p>
-            </section>
-            <section>
-                <h2>Unsere Geschichte</h2>
-                <div>
-                    <p>Die Schneiderei in Konstanz besteht seit 1990 und wurde im Jahr 2006 unter dem Namen "Bodensee Schneiderei" von uns als Nachfolger übernommen. 
-                        Wir stammen aus einer traditionellen Schneiderfamilie, deren Ursprünge bis zur Urgroßmutter zurückreichen, die Stoffe aus Schafwolle herstellte.
-                        Während die Mutter hochqualitative Pullover häkelte, konzentrierte sich der Vater auf die Herstellung und den Verkauf von Stoffen. 
-                        Die Geschwister halfen dabei, wo sie konnten, und lernten so das Handwerk von Grund auf kennen. 
-                        Seit meiner Kindheit bin ich mit dem Schneiderhandwerk verbunden und habe frühzeitig das Nähen gelernt.
-                    </p>
-                </div>
-            </section>
-            
-           <!-- <p class="kunden">Unsere Kundenbewertungen<p>
-            <div id="list"class="reviews-container">
-                <div v-for="(review, index) in displayedReviews" :key="index" class="review">
-                    <div class="review-header">
-                        <p class="review-author">{{ review.author }}</p>
-                        <p class="review-rating">{{ review.rating }}/5 Sterne</p>
-                    </div>
-                    <p class="review-comment">{{ review.comment }}</p>
-        </div> -->
-         
-        <p class="kunden">Unsere Kundenbewertungen<p>
-            <div id="list"class="reviews-container">
-                <div class="review">
-                    <div class="review-header">
-                        <p>War alles super</p>
-                        <p style="color:#333;">4/5</p>
-                       
-                    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>Vereinbare jetzt einen Termin</p>
+          </div>
+          <div class="col-md-6">
+            <a href="/appointment" class="btn btn-primary">Jetzt Buchen</a>
+          </div>
         </div>
-            <div class="review">
+        <div class="bilder">
+          <img id="bildklein" src="images/kleinesBild.jpg" width="100%" alt="Bild mitte">
+        </div>
+  
+        <section>
+          <h2 id="mein-anker">Wer sind wir</h2>
+          <p>
+            Wir sind stolz darauf, hochwertige maßgeschneiderte Kleidung für unsere Kunden herzustellen. Unsere Schneiderei verfügt über ein erfahrenes Team von Schneidern, die darauf spezialisiert sind, einzigartige Kleidungsstücke herzustellen, die perfekt auf die individuellen Bedürfnisse und Wünsche unserer Kunden zugeschnitten sind. Ob Sie einen maßgeschneiderten Anzug für eine Hochzeit, eine individuelle Bluse für die Arbeit oder ein exklusives Kleid für eine besondere Veranstaltung benötigen, wir stellen sicher, dass jedes Stück auf höchstem Niveau gefertigt wird. Bei uns können Sie aus einer großen Auswahl an hochwertigen Stoffen und Materialien auswählen, um sicherzustellen, dass Ihr Kleidungsstück sowohl stilvoll als auch bequem ist. Unsere Schneiderei bietet auch eine breite Palette von Anpassungsmöglichkeiten an, einschließlich personalisierter Stickereien, Knöpfe, Taschen und vieles mehr.
+          </p>
+        </section>
+        <section>
+          <h2>Unsere Geschichte</h2>
+          <div>
+            <p>
+              Die Schneiderei in Konstanz besteht seit 1990 und wurde im Jahr 2006 unter dem Namen "Bodensee Schneiderei" von uns als Nachfolger übernommen. Wir stammen aus einer traditionellen Schneiderfamilie, deren Ursprünge bis zur Urgroßmutter zurückreichen, die Stoffe aus Schafwolle herstellte. Während die Mutter hochqualitative Pullover häkelte, konzentrierte sich der Vater auf die Herstellung und den Verkauf von Stoffen. Die Geschwister halfen dabei, wo sie konnten, und lernten so das Handwerk von Grund auf kennen. Seit meiner Kindheit bin ich mit dem Schneiderhandwerk verbunden und habe frühzeitig das Nähen gelernt.
+            </p>
+          </div>
+        </section>
+  
+        <p class="kunden">Unsere Kundenbewertungen</p>
+        <div class="container">
+          <div id="list" class="reviews-container">
+            <% bewertungen.forEach(function(bewertung) { %>
+              <div class="review-start">
                 <div class="review-header">
-                    <p>Ich bin mehr als zufrieden. Die Maßanschneiderung erfolgte zufrieden</p>
-                    <p style="color: #333;">5/5</p>
-                   
+                  <p id="name"><%= bewertung.name %></p>
+                  <p id="sterne" class="text-right"> 5/<%= bewertung.stars %></p>
                 </div>
-            </div>
-                <div class="review">
-                    <div class="review-header">
-                        <p>Die Mitarbeiter sind sehr kundenfreundlich, mein Kleid wurde perfekt an meinen Wünschen angepasst</p>
-                        <p style="color: #333;" >5/5</p>
-                       
-                    </div>
+                <p><%= bewertung.comment %></p>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      
+
+      </div>
     </div>
-    </div>
-    </div>
-</div>
-<div class="bilder-container">
-    <div class="bilder">
+  
+    <div class="bilder-container">
+      <div class="bilder">
         <img src="images/Anzug.jpg" width="100%" alt="Bild Anzug">
+      </div>
+  
+      <div class="bilder">
+        <img src="images/Kleid.jpg" width="100%" alt="Bild Kleid">
+      </div>
     </div>
-    
-    <div class="bilder">
-        <img src="images/Kleid.jpg" width="100%" alt="Bild Klied">
-    </div>
-    </div>
-</div>
+  </div>
 
  
    
     <script src="https://unpkg.com/vue@3.3.1"></script>
-<script>
+<!--<script>
     const app = Vue.createApp({
         data() {
             return {
@@ -114,5 +87,5 @@
   }
 });
 
-    app.mount('#list');
+    app.mount('#list');-->
 </script>
